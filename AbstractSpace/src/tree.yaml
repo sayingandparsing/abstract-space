@@ -1,0 +1,37 @@
+exes:
+  idea: C:\Program Files\JetBrains\IntelliJ IDEA 2017.2\idea.exe
+  vivaldi: C:\Users\rmacc\AppData\Local\Vivaldi\Application\vivaldi.exe
+commands:
+  _win_quit:
+  _win_left:
+  _win_close: "%{F4}"
+
+standard:
+  -
+	 - data:
+		 symbol: a
+		 label: application
+       subtree:
+      	-
+        	- data:
+          		symbol: v
+            	label: vivaldi
+            command:
+            	type: APP
+              arg: vivaldi.exe
+          - data:
+          		symbol: i
+            	label: intellij
+            command:
+            	type: APP
+              arg: exes.idea
+    - data:
+    		symbol: w
+        label: window
+      subtree:
+      	-
+        	- data:
+          	  symbol: q
+              label: quit application
+            command:
+            	type: KEY

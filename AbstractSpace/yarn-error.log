@@ -1,0 +1,80 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-dom
+
+PATH: 
+  C:\WinAVR-20100110\bin;C:\WinAVR-20100110\utils\bin;C:\ProgramData\Oracle\Java\javapath;c:\program files (x86)\intel\icls client\;c:\program files\intel\icls client\;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\windows\system32\windowspowershell\v1.0\;c:\program files (x86)\intel\intel(r) management engine components\dal;c:\program files\intel\intel(r) management engine components\dal;c:\program files (x86)\intel\intel(r) management engine components\ipt;c:\program files\intel\intel(r) management engine components\ipt;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files (x86)\scala\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Calibre2\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\IBM\SPSS\Statistics\24\JRE\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\Yarn\bin;C:\Program Files (x86)\Brackets\command;C:\Program Files\Rust stable GNU 1.18\bin;C:\tools\Java\server-jre\jdk1.8.0_131\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Users\rmacc\Miniconda3;C:\Users\rmacc\Miniconda3\Library\mingw-w64\bin;C:\Users\rmacc\Miniconda3\Library\usr\bin;C:\Users\rmacc\Miniconda3\Library\bin;C:\Users\rmacc\Miniconda3\Scripts;C:\Users\rmacc\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\rmacc\AppData\Local\Programs\Python\Python36\;C:\Users\rmacc\.cargo\bin;C:\WinAVR-20100110\bin;C:\WinAVR-20100110\utils\bin;C:\ProgramData\Oracle\Java\javapath;c:\program files (x86)\intel\icls client\;c:\program files\intel\icls client\;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\windows\system32\windowspowershell\v1.0\;c:\program files (x86)\intel\intel(r) management engine components\dal;c:\program files\intel\intel(r) management engine components\dal;c:\program files (x86)\intel\intel(r) management engine components\ipt;c:\program files\intel\intel(r) management engine components\ipt;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files (x86)\scala\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Calibre2\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Brackets\command;C:\Program Files\IBM\SPSS\Statistics\24\JRE\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Users\rmacc\AppData\Local\Program;C:\ProgramData\chocolatey\lib\elasticsearch\tools\elasticsearch-5.2.0\bin;C:\Users\rmacc\AppData\Roaming\npm;C:\Users\rmacc\lib\spark-2.2.0-bin-hadoop2.7\bin;C:\tools\Java\server-jre\jdk1.8.0_131\bin;C:\tools\Java\server-jre\jdk1.8.0_131\lib;C:\Users\rmacc\AppData\Local\Microsoft\WindowsApps;
+
+Yarn version: 
+  0.24.6
+
+Node version: 
+  8.1.4
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "app",
+    "productName": "App",
+    "version": "0.0.0",
+    "description": "",
+    "license": "MIT",
+    "repository": "user/repo",
+    "author": {
+      "name": "",
+      "email": "",
+      "url": ""
+    },
+    "scripts": {
+      "test": "xo",
+      "start": "electron ./build/electron/bundle.js",
+      "build": "electron-packager . --out=dist --asar --overwrite --all",
+      "compile": "webpack"
+    },
+    "files": [
+      "index.js",
+      "index.html",
+      "index.css",
+      "./src",
+      "./src/TreeTraversal.ts",
+      "./src/ViewController.ts"
+    ],
+    "keywords": [
+      "electron-app",
+      "electron"
+    ],
+    "dependencies": {
+      "babel-core": "^6.25.0",
+      "babel-loader": "^7.1.1",
+      "commonjs": "0.0.1",
+      "electron": "^1.6.11",
+      "electron-debug": "^1.2.0",
+      "fs": "0.0.1-security",
+      "keypress": "^0.2.1",
+      "react": "^15.6.1",
+      "react-dom": "^15.6.1",
+      "webpack": "^3.2.0"
+    },
+    "devDependencies": {
+      "devtron": "^1.1.0",
+      "electron-packager": "^8.0.0",
+      "xo": "^0.16.0"
+    },
+    "xo": {
+      "esnext": true,
+      "envs": [
+        "node",
+        "browser"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: EBUSY: resource busy or locked, unlink 'C:\Users\rmacc\code\proj\AbstractSpace\node_modules\electron\dist\content_resources_200_percent.pak'

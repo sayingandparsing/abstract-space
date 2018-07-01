@@ -1,0 +1,32 @@
+applications:
+    idea: C:\Program Files\JetBrains\IntelliJ IDEA 2017.2\idea.exe
+    vivaldi: C:\Users\rmacc\AppData\Local\Vivaldi\Application\vivaldi.exe
+
+
+key:
+    win_close: "%{F4}"
+    win_select: "^%{TAB}"
+    win_max: ""
+
+    idea:
+        type_info: "%{EQUALS}"
+        run: "+F10"
+        run_config: "%+F10"
+        project_structure: "+%^s"
+
+        nav:
+            decl: "^b"
+            klass: "^n"
+            file: "^+n"
+            next_method: "%{DOWN}"
+            prev_method: "%{UP}"
+            back: "^%{LEFT}"
+            foreward: "^%{RIGHT}"
+            rel_syms: "^%{HOME}"
+            next_type: "%^{DOWN}"
+            prev_type: "%^{UP}"
+
+        insp:
+            quick_doc: "^q"
+            call_hier: ???
+            type_hier: ???
