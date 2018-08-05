@@ -1,24 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var net = require("net");
+var logger_1 = require("./util/logger");
 var ProcessInterface = /** @class */ (function () {
     function ProcessInterface(port, dataHooks) {
         if (dataHooks === void 0) { dataHooks = {}; }
         this.port = port;
         this.dataHooks = dataHooks;
+        logger_1.log.debug('Created ProcessInterface');
     }
     ProcessInterface.prototype.createConnection = function (port) {
         var _this = this;
         this.socket = net.createConnection(port, function (sock) {
             sock.on('data', function (msg) {
+                logger_1.log.debug('ProcessInterface received a message');
                 _this.handleIncoming(_this.parse(msg));
             });
         });
     };
     ProcessInterface.prototype.handleIncoming = function (msg) {
         var type = msg.type, data = msg.data;
-        console.log('reveived message through socket:');
-        console.log(msg);
         this.dataHooks[type](data);
     };
     ProcessInterface.prototype.on = function (type, fn) {
@@ -55,6 +56,7 @@ var IpcServer = /** @class */ (function () {
         });
     };
     IpcServer.prototype.handleIncoming = function (msg, socket) {
+        var msgObj = JSON.parse(msg);
         var type = msg.type, content = msg.content;
         this.dataHooks[type](content);
     };
@@ -79,10 +81,10 @@ var RabbitServer = /** @class */ (function () {
         amqp.connect('amqp://localhost', function (err, conn) {
             conn.createChannel(function (err, ch) {
                 ch.assertQueue(_this.name, { durable: false });
-                console.log('created channel');
+                logger_1.log.debug('created channel');
                 ch.consume(_this.name, function (msg) {
                     _this.handleIncoming(_this.parse(msg), function (reply) {
-                        console.log('relied to sender');
+                        logger_1.log.debug('replied to sender on queue');
                         var replyBuff = new Buffer(JSON.stringify(reply));
                         ch.sendToQueue(
                         //'daemon',
@@ -97,7 +99,7 @@ var RabbitServer = /** @class */ (function () {
     };
     RabbitServer.prototype.handleIncoming = function (msg, replyCb) {
         var type = msg['type'], content = msg['content'];
-        console.log('received message: ' + type);
+        logger_1.log.debug('received cue message: ' + type);
         var subtype;
         if (msg.hasOwnProperty('subtype')) {
             subtype = msg['subtype'];
@@ -105,7 +107,7 @@ var RabbitServer = /** @class */ (function () {
         else {
             subtype = null;
         }
-        //console.log('type: ' + type + ', content: ' + content + ', subtree: ' +subtype)
+        //log.debug('type: ' + type + ', content: ' + content + ', subtree: ' +subtype)
         if (subtype !== null) {
             var f = this.dataHooks[type][subtype];
             f(content, replyCb);

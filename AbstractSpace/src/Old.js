@@ -7,7 +7,7 @@ var react_dom_1 = require("react-dom");
 var Process = require("process");
 var ipc_1 = require("./ipc");
 function start() {
-    console.log("executing");
+    log.debug("executing");
     var stdin = Process.openStdin();
     var active;
     //let keyEventEmitter = new EventEmitter();
@@ -16,19 +16,19 @@ function start() {
     //let view = React.createElement("AbstractView")
     var main = document.getElementById("main");
     var a = document.createElement("p");
-    console.log('creating element');
+    log.debug('creating element');
     var view = react_dom_1.render(React.createElement(AbstractView_1.AbstractView, null), main);
     var traversal = new TreeTraversal_1.TreeTraversal(view);
     /*
         let pub_port = 5502
         let sub_port = 5504
-        console.log('creating socket')
+        log.debug('creating socket')
         let zmq = require('zeromq'),
             pub = zmq.socket('pub'),
             sub = zmq.socket('sub')
-        console.log('requested')
+        log.debug('requested')
         sub.on('message', function(msg) {
-            console.log(msg)
+            log.debug(msg)
             run_traversal(msg)
         });
         pub.bindSync(`tcp://127.0.0.1:${pub_port}`);
@@ -39,27 +39,27 @@ function start() {
     var path = 'display';
     var ipc = new ipc_1.RabbitServer(path)
         .on('tree', function (content, replyCb) {
-        //console.log('received tree')
+        //log.debug('received tree')
         var name = content['data']['symbol'];
         commandTrees[name] = content;
-        console.log('added ' + name);
+        log.debug('added ' + name);
     })
         .on(['display', 'tree'], function (content, replyCb) {
         var result = null;
         var requestedTree = commandTrees['standard'];
-        console.log('received display request');
+        log.debug('received display request');
         if (requestedTree !== null) {
             run_traversal(requestedTree, replyCb);
         }
         else {
-            console.log('couldn+\'t find a tree called ' + content);
+            log.debug('couldn+\'t find a tree called ' + content);
             replyCb({ type: 'failed' });
         }
     });
-    console.log(ipc.dataHooks);
+    log.debug(ipc.dataHooks);
     function processDisplayRequest(msg) {
         if (!msg.hasOwnProperty('subtype')) {
-            console.log('Expected a subtype for display request');
+            log.debug('Expected a subtype for display request');
             return;
         }
         switch (msg.subtype) {
@@ -71,14 +71,14 @@ function start() {
                     //run_traversal(requestedTree)
                 }
                 else {
-                    console.log('couldn+\'t find a tree called ' + msg.content);
+                    log.debug('couldn+\'t find a tree called ' + msg.content);
                 }
         }
     }
     function run_traversal(tree, replyCb) {
-        console.log('adding listener');
+        log.debug('adding listener');
         window.addEventListener('keydown', function (ev) {
-            console.log(ev);
+            log.debug(ev);
             if (active) {
                 try {
                     traversal.processKeyEvent(ev.key);

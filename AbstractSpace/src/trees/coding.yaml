@@ -1,0 +1,67 @@
+
+- c:
+  - lab: code
+  - fn: code::fn($obj)
+  - f:
+    - lab: format
+    - i: indent
+    - o: outdent
+- n:
+  - lab: nav
+  - f:
+    - lab: function
+    - fn: nav(function.which(*$x))
+    - u: go up function
+    - d: go down function
+		- l: go last function
+		- p: go func params
+		- n: go func name
+		- r: go func return
+- s:
+	- lab: search
+	- fn: search($obj[.in()])
+	- r: references
+	- d: declaration
+	- f: search file
+	- p: search project
+- f:
+	- lab: format
+	- fn: format::fn(_$obj)
+	- p:
+		- lab: parameters
+		- fn: format::_fn(params)
+		- s: stack parameters
+		- i: inline parameters
+		- n: nest parameters
+- i:
+  - lab: +insert(_$x)[.at(y)]
+- t:
+  - lab: tab
+  - fn: f(tab)
+  - l: tab left
+  - r: tab right
+  - n: new tab
+  - w:
+    - lab: window
+    - fn: _fn(window.asInstance(tab))
+    - n: new window
+    - k: kill window
+  - k:
+    - lab: kill
+    - fn: kill(tab.which($x))
+    - c: current
+    - l: left
+    - r: right
+- l:
+  - lab: layout
+  - f:
+    - lab: folding
+    - fn: folding::fn($obj)
+    - e:
+      - lab: expand
+      - fn: folding::expand($x)
+			- a: expand all folds
+		- c:
+			- lab: contract
+			- fn: folding::contract($obj)
+			- o: others

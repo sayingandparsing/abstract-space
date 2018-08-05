@@ -4,7 +4,7 @@ import {Command, ProcessResultMessage, ProcessState} from "./DataTypes"
 
 
 import {remote} from 'electron'
-import {MapLike} from "typescript"
+import {log} from './util/logger'
 //import * as child_process from "child-process"
 
 export class CommandDispatcher {
@@ -17,8 +17,8 @@ export class CommandDispatcher {
     }
 
     notifyProcessState(msg: ProcessResultMessage) {
-        console.log("notified of process result")
-        console.log(msg)
+        log.debug("notified of process result")
+        log.debug(msg)
         switch (msg.event) {
             case ProcessState.TERMINATED:
                 this.closeWindow()
@@ -39,8 +39,8 @@ export class CommandDispatcher {
     executeCommand(commandId) {
         switch (commandId.type) {
             case "KEYS":
-                console.log('simulating keys')
-                console.log(`"from pywinauto.keyboard import SendKeys; SendKeys('${commandId.arg}')"`)
+                log.debug('simulating keys')
+                log.debug(`"from pywinauto.keyboard import SendKeys; SendKeys('${commandId.arg}')"`)
 /*                let x = child_process.spawn('python.exe',
                     ['C:\\Users\\rmacc\\as_scripts\\simulate_key.py', commandId.arg],
                     //['-c', `"from pywinauto.keyboard import SendKeys; SendKeys('${commandId.arg}')"`],
@@ -49,11 +49,11 @@ export class CommandDispatcher {
                         stdio: 'ignore'
                     })*/
 /*				x.on('exit', function (code, signal) {
-                    console.log('child process exited with ' +
+                    log.debug('child process exited with ' +
                         `code ${code} and signal ${signal}`);
                 });
                 x.stdout.on('data', (data) => {
-                    console.log(`child stdout:\n${data}`);
+                    log.debug(`child stdout:\n${data}`);
                 });
 
                 x.stderr.on('data', (data) => {

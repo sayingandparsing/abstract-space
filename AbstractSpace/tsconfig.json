@@ -12,6 +12,7 @@
 	//"webpack.config.js"
   ],
   "include": [
-	"src"
+	"src",
+	"index.ts"
   ]
 }

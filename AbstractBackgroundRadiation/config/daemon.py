@@ -122,7 +122,7 @@ class Daemon:
     def run_electron(self):
         #p = await asyncio.create_subprocess_shell(
         p = subprocess.Popen(
-            ['electron', '/home/reagan/code/proj/AbstractSpace/index.js'])
+            ['electron', '/home/reagan/code/proj/abstract-space/AbstractSpace/index.js'])
            # stdout=asyncio.subprocess.PIPE
         #)
 

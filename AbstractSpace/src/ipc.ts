@@ -1,4 +1,5 @@
 import * as net from 'net'
+import {log} from './util/logger'
 
 export class ProcessInterface {
 
@@ -10,7 +11,7 @@ export class ProcessInterface {
 				dataHooks: {[key: string]: Function} = {}) {
 		this.port = port
 		this.dataHooks = dataHooks
-
+		log.debug('Created ProcessInterface')
 	}
 
 	createConnection(port: string) {
@@ -18,6 +19,7 @@ export class ProcessInterface {
 			port,
 			(sock) => {
 				sock.on('data', (msg) => {
+					log.debug('ProcessInterface received a message')
 					this.handleIncoming(this.parse(msg))
 				})
 			}
@@ -26,8 +28,6 @@ export class ProcessInterface {
 
 	handleIncoming(msg) {
 		let {type, data} = msg
-		console.log('reveived message through socket:')
-		console.log(msg)
 		this.dataHooks[type](data)
 	}
 
@@ -40,9 +40,11 @@ export class ProcessInterface {
 		return JSON.parse(data.trim())
 	}
 
-	send(typ: string,
-		 content: object|string,
-		 meta: object = null) {
+	send(
+		typ: string,
+		content: object|string,
+		meta: object = null
+	) {
 		this.socket.write({
 			type: typ,
 			content: content,
@@ -75,6 +77,7 @@ export class IpcServer {
 	}
 
 	handleIncoming(msg, socket) {
+		const msgObj = JSON.parse(msg)
 		let {type, content} = msg
 		this.dataHooks[type](content)
 	}
@@ -105,12 +108,12 @@ export class RabbitServer {
 		amqp.connect('amqp://localhost', (err, conn) => {
 			conn.createChannel((err, ch) => {
 				ch.assertQueue(this.name, {durable: false})
-				console.log('created channel')
+				log.debug('created channel')
 				ch.consume(this.name, (msg) => {
 					this.handleIncoming(
 						this.parse(msg),
 						(reply) => {
-							console.log('relied to sender')
+							log.debug('replied to sender on queue')
 							let replyBuff =
 								new Buffer(JSON.stringify(reply))
 							ch.sendToQueue(
@@ -130,14 +133,14 @@ export class RabbitServer {
 	handleIncoming(msg, replyCb) {
 			let type = msg['type'],
 				content = msg['content']
-			console.log('received message: ' + type)
+			log.debug('received cue message: ' + type)
 			let subtype
 			if (msg.hasOwnProperty('subtype')) {
 				subtype = msg['subtype']
 			} else {
 				subtype = null
 			}
-			//console.log('type: ' + type + ', content: ' + content + ', subtree: ' +subtype)
+			//log.debug('type: ' + type + ', content: ' + content + ', subtree: ' +subtype)
 			if (subtype !== null) {
 				let f = this.dataHooks[type][subtype]
 				f(content, replyCb)

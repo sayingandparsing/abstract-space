@@ -1,0 +1,59 @@
+
+tabs:
+  search tabs:  F2
+  previous tab:
+  next tab:
+  tab left:   c.PageUp
+  tab right:  c.PageDown
+  new tab:    c.t
+  new window:   c.n
+  kill window:  c.s.w
+  kill current: c.w
+  kill left:  c.a.t
+  kill right:   ^!+t
+  kill others:  ^!+t
+
+bookmarks:
+  search:
+  manager: c.b
+  new:
+
+downloads:
+history: c.h
+settings: a.p
+extensions:
+focus address:
+back: c.Left
+process monitor: s.Escape
+
+- v:
+  - lab: vivaldi
+  - t:
+    - lab: tab
+    - fn: fn(tab)
+    - l: left, c.PageUp
+    - r: right, c.PageDown
+    - n: tab, c.t
+    - w:
+      - lab: window
+      - fn: fn(window.as(tab))
+      - n: new, c.n
+      - k: kill, c.s.w
+    - k:
+      - lab: kill
+      - fn: +kill(tab.which($x))
+      - c: current, c.w
+  - v:
+    - lab: view
+    - fn: +open($view)
+    - b: bookmarks
+    - d: downloads
+    - e: extensions
+    - h: history
+    - s: settings
+  - b:
+    - lab: bookmark
+    - fn: fn(bookmark)
+    - n: new
+    - m: manage
+    - s: search

@@ -1,54 +1,62 @@
 'use strict';
 
-import {TreeTraversal} from './TreeTraversal'
-import {AbstractView} from "./AbstractView";
-import * as React from "react"
-import {render} from "react-dom"
-import {RabbitServer} from './ipc'
-import {remote} from 'electron'
+import {TreeTraversal}     from './TreeTraversal'
+import {RabbitServer, ProcessInterface}      from './ipc'
 import {SingleViewService} from './SingleViewService'
+import {log}               from './util/logger'
+import {SpaceParser}       from './SpaceParser'
+import {BrowserWindow, ipcMain}     from 'electron'
+import {CommandExecution} from './command/command-functions'
+
+// const log = require('electron-log');
+// log.transports.file.level = 'debug';
+// log.transports.file.file = __dirname + 'log.log';
+// log.debug(log)
+import {tree} from './trees/desktop'
 
 
+export class ProcessController {
 
-class ProcessController {
-
-
-	active: boolean;
-	//let keyEventEmitter = new EventEmitter();
-	//let keypressListener = new keypress.Listener()
-	//let view = new ViewController(window);
-	//let view = React.createElement("AbstractView")
-	main = document.getElementById("main")
-	a = document.createElement("p")
-
-	view = render(
-		React.createElement(AbstractView, null),
-		this.main
-	)
-	traversal = new TreeTraversal(this.view, this.deactivateSelection);
-	viewService = new SingleViewService(this.view)
-
+	active      :boolean
+	mainWindow  :BrowserWindow
+	viewService :SingleViewService
+	traversal   :TreeTraversal
 	commandTrees
+	dispatch :CommandExecution
 	ipc
+	path = 'display'
+	socket :ProcessInterface
+	view
 
-	constructor() {
+	constructor(window) {
+		console.log('created process controller')
+		this.mainWindow  = window
+		this.view        = new SingleViewService(window)
+		this.viewService = new SingleViewService(this.view)
+		log.debug('initializing process controller')
 		this.commandTrees = {}
-		this.ipc = new RabbitServer(this.path)
+		this.start()
+		/*this.socket =
+			new ProcessInterface('6601')
+				.on('standard')
+
+
+		/*this.ipc = new RabbitServer(this.path)
 			.on('tree', (content, replyCb) => {
-				console.log('received tree')
+				log.debug('received tree')
 				let name = content['data']['symbol']
 				this.commandTrees[name] = content
-				//console.log(this.commandTrees)
-				//console.log('added ' + name)
+				//log.debug(this.commandTrees)
+				//log.debug('added ' + name)
 			})
 			.on(['display', 'tree'], (content, replyCb) => {
 				let requestedTree = this.commandTrees['standard']
-				console.log('received display request')
+				log.debug('received display request')
 				if (requestedTree !== null) {
-					//console.log(requestedTree)
+					//log.debug(requestedTree)
 					this.run_traversal(requestedTree, replyCb)
 				} else {
-					console.log('couldn+\'t find a tree called ' + content)
+					log.error('couldn+\'t find a tree called ' + content)
 					replyCb({type: 'failed'})
 				}
 			})
@@ -59,27 +67,45 @@ class ProcessController {
 				this.viewService.breakChain()
 			})
 			/*.on(['display', 'appTree'] , (content, replyCb) => {
-				console.log('received app tree')
+				log.debug('received app tree')
 				let requestedTree = this.commandTrees['app_specific'][content.name]
-				console.log('requested tree = '+content.name)
+				log.debug('requested tree = '+content.name)
 				if (requestedTree !== null)
 					this.run_traversal(requestedTree, replyCb)
 				else {
-					console.log('couldn+\'t find a tree called ' + content)
+					log.debug('couldn+\'t find a tree called ' + content)
 					replyCb({type: 'failed'})
 				}
-			})*/
-			.createServer()
+			})
+			.createServer()*/
+	}
+
+	async start() {
+		const parser = new SpaceParser('')
+		this.commandTrees['standard'] =
+			await parser.traverse(tree, 'standard')
+		ipcMain.on('key', async (ev, key) => {
+			await this.traversal.processKeyEvent(key)
+		})
+		this.dispatch = new CommandExecution(parser.commands)
+		const dispatchCommand :Function =
+			async (cmdId) => {
+				log.debug('Sending command to dispatcher:')
+				log.debug(cmdId)
+				await this.dispatch.executeCommand(cmdId)
+			}
+		this.traversal = new TreeTraversal(
+			this.dispatch,
+			this.deactivateSelection,
+			this.mainWindow
+		)
+		await this.run_traversal(this.commandTrees, ()=>{})
 	}
 
 
-
-	path = 'display'
-
-
-	processDisplayRequest(msg) {
+	async processDisplayRequest(msg) {
 		if (!msg.hasOwnProperty('subtype')) {
-			console.log('Expected a subtype for display request')
+			log.error('Expected a subtype for display request')
 			return
 		}
 		switch (msg.subtype) {
@@ -90,37 +116,42 @@ class ProcessController {
 				if (requestedTree !== null) {
 					//run_traversal(requestedTree)
 				} else {
-					console.log('couldn+\'t find a tree called ' + msg.content)
+					log.error('couldn+\'t find a tree called ' + msg.content)
 				}
 		}
 	}
 
 
-	run_traversal(tree, replyFn) {
-		console.log('running traversal')
-		window.addEventListener('keydown', (ev) => {
-			//console.log(ev)
+	async run_traversal(tree, replyFn) {
+		console.log('run traverse')
+		console.log(tree)
+		console.log(typeof tree)
+		console.log(tree['standard']['subtree'])
+		console.log('after')
+		/*this.mainWindow.addEventListener('keydown', (ev) => {
+			//log.debug(ev)
 			if (this.active) {
 				try {
 					this.traversal.processKeyEvent(ev.key)
 				} catch (e) {
 				}
 			}
-		})
-		this.activateSelection(tree, replyFn)
+		}, true)*/
+		console.log('activated selection')
+		await this.activateSelection(tree, replyFn)
 	}
 
 
-	activateSelection(tree, replyCb) {
+	async activateSelection(tree, replyCb) {
 		this.traversal.callback = replyCb
-		this.traversal.resetContext(tree)
+		await this.traversal.resetContext(tree['standard'])
 		this.active = true
-		remote.getCurrentWindow().show()
+		this.mainWindow.show()
 	}
 
-	deactivateSelection() {
+	async deactivateSelection() {
 		this.active = false
-		remote.getCurrentWindow().hide()
+		this.mainWindow.hide()
 
 		//// REPLACE
 
@@ -131,5 +162,4 @@ class ProcessController {
 
 	}
 }
-console.log('executing')
-let p = new ProcessController()
+log.debug('executing')

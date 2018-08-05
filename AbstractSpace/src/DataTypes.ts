@@ -22,7 +22,7 @@ export interface PathNode extends Node {
 
 export interface TermNode extends Node {
     data: NodeData
-    command: Command
+    command: number
 }
 
 export type CommandRef = string;

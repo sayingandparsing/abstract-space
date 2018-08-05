@@ -12,68 +12,80 @@ import {
 	Connections,
 	NodeSymbol, AnyNode, RootNode, ProcessState
 } from "./DataTypes"
-import {AbstractView} from "./AbstractView";
-
+import {log} from './util/logger'
+import {BrowserWindow} from 'electron'
+import { isCallSignatureDeclaration } from "typescript";
+import { CommandExecution } from "./command/command-functions";
 
 export class TreeTraversal {
     //context :DescentContext;
     eventQueue :NodeSymbol[]
     context :DescentContext
     viewEmitter = new EventEmitter()
-	updateViewState: Function
-	callback: Function
+	execution: CommandExecution
 	deactivate
+	mainWindow :BrowserWindow
 
     //type NodeSymbol = String
 
-    constructor(view :AbstractView, deactivate) {
-		this.updateViewState = view.stateUpdateCallback()
+	constructor (
+			execution :CommandExecution,
+			deactivate :Function,
+			window :BrowserWindow
+	) {
 		this.deactivate = deactivate
+		this.mainWindow = window
+		this.execution = execution
+		console.log('new traverser')
     }
 
-    resetContext(root :RootNode)
+    async resetContext(root :RootNode)
     {
-		console.log(root)
+		console.log('resetting context')
+		console.log(await root['subtree'])
         this.context = {
             root: root,
             current: root,
             level: root.subtree.map(item => item.data),
             path: []
         }
-        console.log('context')
-        this.updateViewState(this.context.level)
+		console.log(this.context.level)
+		console.log('sending update command')
+		this.mainWindow.webContents.once('dom-ready', () => {
+			console.log('dom ready')
+    		this.mainWindow.webContents.send('update', this.context.level)
+    	})
+		this.mainWindow.webContents.send('update', this.context.level)
     }
 
-    processKeyEvent(key :NodeSymbol)
+    async processKeyEvent(key :NodeSymbol)
     {
-
+		log.debug('Key press detected: '+key)
 		if (key === 'Escape') {
-			console.log("Terminated")
-			this.callback({
+			log.debug("Terminated")
+			/*this.callback({
 				type: 'failed',
 				path: this.context.path
-			})
+			})*/
 			this.deactivate()
 			return
 		}
 		let symbols = this.context.level.map(node => node.symbol)
+		log.debug('symbols:')
+		log.debug(symbols)
         if (symbols.indexOf(key) > -1) {
-    		console.log("update!!!")
+    		log.debug("Symbol found for transmitted key")
             this.context.path.push(key)
 			let current = <PathNode> this.context.current
-			console.log("current")
             this.context.current = current.subtree[current.subtree.map(
             	node => node.data.symbol).indexOf(key)]
-
+			console.log(this.context.current)
             if (this.isTerminal(
                     <PathNode|TermNode> this.context.current)) {
-    			console.log("is terminal")
-                let term = <TermNode> this.context.current
-                this.callback({
-                    type: 'command',
-                    path: this.context.path,
-                    content: term.command
-                })
+    			log.debug("Node is terminal")
+				let term = <TermNode> this.context.current
+				console.log(term.command)
+                await this.execution.executeCommand(term.command)
 				this.deactivate()
 				return
 
@@ -83,13 +95,13 @@ export class TreeTraversal {
 					<PathNode> this.context.current)
 				if (level) {
 					this.context.level = level
-					console.log('updating view state')
-					this.updateViewState(level)
+					log.debug('updating view state')
+					this.mainWindow.webContents.send('update', level)
 				} else {
-					this.callback({
+					/*this.callback({
 						type: 'failure',
 						path: this.context.path
-					})
+					})*/
 					this.deactivate()
 					return
 				}
@@ -106,8 +118,10 @@ export class TreeTraversal {
     }
 
 
-    connectedTo(n :PathNode, sym :NodeSymbol) :boolean
-    {
+    async connectedTo (
+			n :PathNode,
+			sym :NodeSymbol
+	) :Promise<boolean> {
         for (let conn of n.subtree) {
             if (conn.data.symbol===sym)
                 return true
@@ -124,7 +138,7 @@ export class TreeTraversal {
 
     isTerminal(node :PathNode|TermNode) :boolean
     {
-    	console.log("is terminal?")
+    	log.debug("Checking if node is terminal")
         return (<TermNode>node).command !== undefined
     }
 

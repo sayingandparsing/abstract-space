@@ -19,6 +19,7 @@ var ViewController = /** @class */ (function () {
     ViewController.prototype.processSignal = function (signal) {
         switch (signal) {
             case DataTypes_1.ProcessState.TERMINATED:
+            //this.hideView(); break
         }
     };
     ViewController.prototype.updateView = function (msg) {

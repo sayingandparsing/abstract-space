@@ -97,21 +97,21 @@ var ProcessController = /** @class */ (function () {
         this.commandTrees = {};
         this.ipc = new ipc_1.RabbitServer(this.path)
             .on('tree', function (content, replyCb) {
-            console.log('received tree');
+            log.debug('received tree');
             var name = content['data']['symbol'];
             _this.commandTrees[name] = content;
-            //console.log(this.commandTrees)
-            //console.log('added ' + name)
+            //log.debug(this.commandTrees)
+            //log.debug('added ' + name)
         })
             .on(['display', 'tree'], function (content, replyCb) {
             var requestedTree = _this.commandTrees['standard'];
-            console.log('received display request');
+            log.debug('received display request');
             if (requestedTree !== null) {
-                //console.log(requestedTree)
+                //log.debug(requestedTree)
                 _this.run_traversal(requestedTree, replyCb);
             }
             else {
-                console.log('couldn+\'t find a tree called ' + content);
+                log.debug('couldn+\'t find a tree called ' + content);
                 replyCb({ type: 'failed' });
             }
         })
@@ -119,7 +119,7 @@ var ProcessController = /** @class */ (function () {
     }
     ProcessController.prototype.processDisplayRequest = function (msg) {
         if (!msg.hasOwnProperty('subtype')) {
-            console.log('Expected a subtype for display request');
+            log.debug('Expected a subtype for display request');
             return;
         }
         switch (msg.subtype) {
@@ -131,15 +131,15 @@ var ProcessController = /** @class */ (function () {
                     //run_traversal(requestedTree)
                 }
                 else {
-                    console.log('couldn+\'t find a tree called ' + msg.content);
+                    log.debug('couldn+\'t find a tree called ' + msg.content);
                 }
         }
     };
     ProcessController.prototype.run_traversal = function (tree, replyCb) {
         var _this = this;
-        //console.log('adding listener')
+        //log.debug('adding listener')
         window.addEventListener('keydown', function (ev) {
-            //console.log(ev)
+            //log.debug(ev)
             if (_this.active) {
                 try {
                     _this.traversal.processKeyEvent(ev.key);
@@ -164,7 +164,7 @@ var ProcessController = /** @class */ (function () {
     };
     return ProcessController;
 }());
-console.log('executing');
+log.debug('executing');
 var p = new ProcessController();
 //# sourceMappingURL=ProcessController.js.map
 
@@ -193,12 +193,12 @@ var TreeTraversal = /** @class */ (function () {
             level: root.subtree.map(function (item) { return item.data; }),
             path: []
         };
-        console.log('context');
+        log.debug('context');
         this.updateViewState(this.context.level);
     };
     TreeTraversal.prototype.processKeyEvent = function (key) {
         if (key === 'Escape') {
-            console.log("Terminated");
+            log.debug("Terminated");
             this.callback({
                 type: 'failed',
                 path: this.context.path
@@ -208,13 +208,13 @@ var TreeTraversal = /** @class */ (function () {
         }
         var symbols = this.context.level.map(function (node) { return node.symbol; });
         if (symbols.indexOf(key) > -1) {
-            console.log("update!!!");
+            log.debug("update!!!");
             this.context.path.push(key);
             var current = this.context.current;
-            console.log("current");
+            log.debug("current");
             this.context.current = current.subtree[current.subtree.map(function (node) { return node.data.symbol; }).indexOf(key)];
             if (this.isTerminal(this.context.current)) {
-                console.log("is terminal");
+                log.debug("is terminal");
                 var term = this.context.current;
                 this.callback({
                     type: 'command',
@@ -228,7 +228,7 @@ var TreeTraversal = /** @class */ (function () {
                 var level = this.extractLevel(this.context.current);
                 if (level) {
                     this.context.level = level;
-                    console.log('updating view state');
+                    log.debug('updating view state');
                     this.updateViewState(level);
                 }
                 else {
@@ -256,7 +256,7 @@ var TreeTraversal = /** @class */ (function () {
         return node.subtree.map(function (desc) { return desc.data; });
     };
     TreeTraversal.prototype.isTerminal = function (node) {
-        console.log("is terminal?");
+        log.debug("is terminal?");
         return node.command !== undefined;
     };
     return TreeTraversal;
@@ -316,7 +316,7 @@ var AbstractView = /** @class */ (function (_super) {
         };
     };
     AbstractView.prototype.render = function () {
-        console.log('rendering');
+        log.debug('rendering');
         var rows = this.state.selections
             .map(function (node) {
             return React.createElement("tr", { className: "list-row" },
@@ -421,10 +421,10 @@ var RabbitServer = /** @class */ (function () {
         amqp.connect('amqp://localhost', function (err, conn) {
             conn.createChannel(function (err, ch) {
                 ch.assertQueue(_this.name, { durable: false });
-                console.log('created channel');
+                log.debug('created channel');
                 ch.consume(_this.name, function (msg) {
                     _this.handleIncoming(_this.parse(msg), function (reply) {
-                        console.log('relied to sender');
+                        log.debug('relied to sender');
                         var replyBuff = new Buffer(JSON.stringify(reply));
                         ch.sendToQueue(
                         //'daemon',
@@ -446,7 +446,7 @@ var RabbitServer = /** @class */ (function () {
         else {
             subtype = null;
         }
-        //console.log('type: ' + type + ', content: ' + content + ', subtree: ' +subtype)
+        //log.debug('type: ' + type + ', content: ' + content + ', subtree: ' +subtype)
         if (subtype !== null) {
             var f = this.dataHooks[type][subtype];
             f(content, replyCb);

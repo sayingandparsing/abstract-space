@@ -1,10 +1,12 @@
 
 
 import {Map} from "typescript"
+import {log} from './util/logger'
+
 
 class DataTransform {
 
 	match = {
-		Map: (str) => console.log(str)
+		Map: (str) => log.debug(str)
 	}
 }

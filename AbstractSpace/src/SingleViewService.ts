@@ -1,14 +1,14 @@
-import {AbstractView} from './AbstractView'
-import {remote} from 'electron'
+import {ipcMain} from 'electron'
 
 export class SingleViewService {
 
 	updateView: Function
 	window
 
-	constructor(view: AbstractView) {
-		this.updateView = view.stateUpdateCallback()
-		this.window = remote.getCurrentWindow()
+	constructor(window) {
+		this.updateView = items => 
+			window.webContents.send('update', items)
+		this.window = window
 	}
 
 
