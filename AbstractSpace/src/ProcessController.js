@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var TreeTraversal_1 = require("./TreeTraversal");
+var ipc_1 = require("./ipc");
 var SingleViewService_1 = require("./SingleViewService");
 var logger_1 = require("./util/logger");
 var SpaceParser_1 = require("./SpaceParser");
@@ -123,6 +124,28 @@ var ProcessController = /** @class */ (function () {
                                 }
                             });
                         }); });
+                        this.requestListener =
+                            new ipc_1.IpcServer('6601')
+                                .on('tree', function (msg) { return __awaiter(_this, void 0, void 0, function () {
+                                var _a;
+                                return __generator(this, function (_b) {
+                                    switch (_b.label) {
+                                        case 0:
+                                            _b.trys.push([0, 2, , 3]);
+                                            logger_1.log.debug('recieved tree request');
+                                            console.log('%j', this.commandTrees);
+                                            return [4 /*yield*/, this.run_traversal(this.commandTrees[msg], function () { })];
+                                        case 1:
+                                            _b.sent();
+                                            return [3 /*break*/, 3];
+                                        case 2:
+                                            _a = _b.sent();
+                                            logger_1.log.debug('no tree found for request ' + msg);
+                                            return [3 /*break*/, 3];
+                                        case 3: return [2 /*return*/];
+                                    }
+                                });
+                            }); });
                         this.dispatch = new command_functions_1.CommandExecution(parser.commands);
                         dispatchCommand = function (cmdId) { return __awaiter(_this, void 0, void 0, function () {
                             return __generator(this, function (_a) {
@@ -138,9 +161,6 @@ var ProcessController = /** @class */ (function () {
                             });
                         }); };
                         this.traversal = new TreeTraversal_1.TreeTraversal(this.dispatch, this.deactivateSelection, this.mainWindow);
-                        return [4 /*yield*/, this.run_traversal(this.commandTrees, function () { })];
-                    case 2:
-                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -176,19 +196,6 @@ var ProcessController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log('run traverse');
-                        console.log(tree);
-                        console.log(typeof tree);
-                        console.log(tree['standard']['subtree']);
-                        console.log('after');
-                        /*this.mainWindow.addEventListener('keydown', (ev) => {
-                            //log.debug(ev)
-                            if (this.active) {
-                                try {
-                                    this.traversal.processKeyEvent(ev.key)
-                                } catch (e) {
-                                }
-                            }
-                        }, true)*/
                         console.log('activated selection');
                         return [4 /*yield*/, this.activateSelection(tree, replyFn)];
                     case 1:
@@ -202,13 +209,12 @@ var ProcessController = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        this.traversal.callback = replyCb;
-                        return [4 /*yield*/, this.traversal.resetContext(tree['standard'])];
+                    case 0: return [4 /*yield*/, this.traversal.resetContext(tree)];
                     case 1:
                         _a.sent();
                         this.active = true;
                         this.mainWindow.show();
+                        this.mainWindow.focus();
                         return [2 /*return*/];
                 }
             });

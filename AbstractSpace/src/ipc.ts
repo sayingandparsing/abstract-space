@@ -12,9 +12,11 @@ export class ProcessInterface {
 		this.port = port
 		this.dataHooks = dataHooks
 		log.debug('Created ProcessInterface')
+		this.createConnection(this.port)
 	}
 
 	createConnection(port: string) {
+		log.debug('creating ipc socket on port '+port)
 		this.socket = net.createConnection(
 			port,
 			(sock) => {
@@ -27,6 +29,7 @@ export class ProcessInterface {
 	}
 
 	handleIncoming(msg) {
+		log.debug('handling incoming message')
 		let {type, data} = msg
 		this.dataHooks[type](data)
 	}
@@ -61,23 +64,37 @@ export class IpcServer {
 
 	constructor(path) {
 		this.path = path
+		log.debug('creating server on '+this.path)
+		this.createServer()
 	}
 
 	createServer() {
-		this.server = net.createServer()
+		this.server = net.createServer(connect => {
+			connect.on('data', (data) => {
+				log.debug('received data on ' +this.path)
+				log.debug(data.toString('utf-8'))
+				try {
+					this.handleIncoming(this.parse(data.toString('utf-8')), connect)
+				} catch (e) {
+					log.debug(e.message)
+				}
+			}
+		)
+		})
 		this.server.listen(this.path)
-		this.server.on('connection', (socket) => {
+		/*this.server.on('connection', (socket) => {
 			socket.on('message', (msg) => {
 				this.handleIncoming(
 					this.parse(msg),
 					socket
 				)
 			})
-		})
+		})*/
 	}
 
 	handleIncoming(msg, socket) {
-		const msgObj = JSON.parse(msg)
+		log.debug(typeof msg)
+		//const msgObj = JSON.parse(msg)
 		let {type, content} = msg
 		this.dataHooks[type](content)
 	}

@@ -1535,3 +1535,1088 @@
 {"message":"Checking command type","level":"debug"}
 {"message":"Executing shell command: ","level":"debug"}
 {"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Window Quick Tile Left\"","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Key press detected: w","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"updating view state","level":"debug"}
+{"message":"Key press detected: e","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["c","m","l","r","e"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"Node is terminal","level":"debug"}
+{"message":"Checking command type","level":"debug"}
+{"message":"Executing shell command: ","level":"debug"}
+{"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Expose\"","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"Created ProcessInterface","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Shift","level":"debug"}
+{"message":"Key press detected: t","level":"debug"}
+{"message":"Key press detected: t","level":"debug"}
+{"message":"Key press detected: t","level":"debug"}
+{"message":"Key press detected: Escape","level":"debug"}
+{"message":"Terminated","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"Created ProcessInterface","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"Created ProcessInterface","level":"debug"}
+{"message":"creating ipc socket on port 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"Unexpected token o in JSON at position 1","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":{"type":"tree","content":"standard"},"level":"debug"}
+{"message":"Unexpected token o in JSON at position 1","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Unexpected token o in JSON at position 1","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Unexpected token o in JSON at position 1","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"standard","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"standard","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"Key press detected: Enter","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"standard","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"standard","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":{"standard":{"data":{"lab":"desktop","symbol":"standard"},"subtree":[{"data":{"lab":"window","fn":"fn($window)","symbol":"w"},"subtree":[{"data":{"lab":"close","symbol":"c"},"command":0},{"data":{"lab":"maximize","symbol":"m"},"command":1},{"data":{"lab":"left","symbol":"l"},"command":2},{"data":{"lab":"right","symbol":"r"},"command":3},{"data":{"lab":"expose","symbol":"e"},"command":4}]}]}},"level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"no tree found for request standard","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: w","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"updating view state","level":"debug"}
+{"message":"Key press detected: e","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["c","m","l","r","e"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"Node is terminal","level":"debug"}
+{"message":"Checking command type","level":"debug"}
+{"message":"Executing shell command: ","level":"debug"}
+{"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Expose\"","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: w","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"updating view state","level":"debug"}
+{"message":"Key press detected: e","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["c","m","l","r","e"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"Node is terminal","level":"debug"}
+{"message":"Checking command type","level":"debug"}
+{"message":"Executing shell command: ","level":"debug"}
+{"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Expose\"","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: w","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"updating view state","level":"debug"}
+{"message":"Key press detected: e","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["c","m","l","r","e"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"Node is terminal","level":"debug"}
+{"message":"Checking command type","level":"debug"}
+{"message":"Executing shell command: ","level":"debug"}
+{"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Expose\"","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: Escape","level":"debug"}
+{"message":"Terminated","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: Escape","level":"debug"}
+{"message":"Terminated","level":"debug"}
+{"message":"executing","level":"debug"}
+{"message":"initializing process controller","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"branches","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"close","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"maximize","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"left","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"right","level":"debug"}
+{"message":"starting traversal","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"Registering command: ","level":"debug"}
+{"message":"expose","level":"debug"}
+{"message":"creating server on 6601","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: w","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"updating view state","level":"debug"}
+{"message":"Key press detected: e","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["c","m","l","r","e"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"Node is terminal","level":"debug"}
+{"message":"Checking command type","level":"debug"}
+{"message":"Executing shell command: ","level":"debug"}
+{"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Expose\"","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: w","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"updating view state","level":"debug"}
+{"message":"Key press detected: e","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["c","m","l","r","e"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"Node is terminal","level":"debug"}
+{"message":"Checking command type","level":"debug"}
+{"message":"Executing shell command: ","level":"debug"}
+{"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Expose\"","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: w","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"updating view state","level":"debug"}
+{"message":"Key press detected: e","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["c","m","l","r","e"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"Node is terminal","level":"debug"}
+{"message":"Checking command type","level":"debug"}
+{"message":"Executing shell command: ","level":"debug"}
+{"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Expose\"","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: w","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"updating view state","level":"debug"}
+{"message":"Key press detected: l","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["c","m","l","r","e"],"level":"debug"}
+{"message":"Symbol found for transmitted key","level":"debug"}
+{"message":"Checking if node is terminal","level":"debug"}
+{"message":"Node is terminal","level":"debug"}
+{"message":"Checking command type","level":"debug"}
+{"message":"Executing shell command: ","level":"debug"}
+{"message":"qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Window Quick Tile Left\"","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: Control","level":"debug"}
+{"message":"symbols:","level":"debug"}
+{"message":["w"],"level":"debug"}
+{"message":"Key press detected: Escape","level":"debug"}
+{"message":"Terminated","level":"debug"}
+{"message":"received data on 6601","level":"debug"}
+{"message":"{\"type\":\"tree\",\"content\":\"standard\"}\n","level":"debug"}
+{"message":"object","level":"debug"}
+{"message":"recieved tree request","level":"debug"}
+{"message":"Key press detected: Escape","level":"debug"}
+{"message":"Terminated","level":"debug"}

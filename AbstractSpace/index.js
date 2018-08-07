@@ -54,6 +54,7 @@ app.on('activate', function () {
 app.on('ready', function () {
     console.log('ready');
     mainWindow = createMainWindow();
+    //mainWindow.hide()
     console.log('creating process controller');
     processController = new ProcessController_1.ProcessController(mainWindow);
 });

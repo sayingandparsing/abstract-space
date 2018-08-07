@@ -65,6 +65,7 @@ app.on('activate', () => {
 app.on('ready', () => {
 	console.log('ready')
 	mainWindow = createMainWindow();
+	//mainWindow.hide()
 	console.log('creating process controller')
 	processController = new ProcessController(mainWindow)
 });

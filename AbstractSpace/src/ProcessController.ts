@@ -1,7 +1,7 @@
 'use strict';
 
 import {TreeTraversal}     from './TreeTraversal'
-import {RabbitServer, ProcessInterface}      from './ipc'
+import {ProcessInterface, IpcServer}  from './ipc'
 import {SingleViewService} from './SingleViewService'
 import {log}               from './util/logger'
 import {SpaceParser}       from './SpaceParser'
@@ -23,6 +23,7 @@ export class ProcessController {
 	traversal   :TreeTraversal
 	commandTrees
 	dispatch :CommandExecution
+	requestListener :IpcServer
 	ipc
 	path = 'display'
 	socket :ProcessInterface
@@ -35,6 +36,7 @@ export class ProcessController {
 		this.viewService = new SingleViewService(this.view)
 		log.debug('initializing process controller')
 		this.commandTrees = {}
+
 		this.start()
 		/*this.socket =
 			new ProcessInterface('6601')
@@ -87,6 +89,18 @@ export class ProcessController {
 		ipcMain.on('key', async (ev, key) => {
 			await this.traversal.processKeyEvent(key)
 		})
+		this.requestListener =
+			new IpcServer('6601')
+				.on('tree', async msg => {
+					try {
+						log.debug('recieved tree request')
+						console.log('%j', this.commandTrees)
+						await this.run_traversal(this.commandTrees[msg], ()=>{})
+					} catch {
+						log.debug('no tree found for request '+msg)
+					}
+
+				})
 		this.dispatch = new CommandExecution(parser.commands)
 		const dispatchCommand :Function =
 			async (cmdId) => {
@@ -99,7 +113,7 @@ export class ProcessController {
 			this.deactivateSelection,
 			this.mainWindow
 		)
-		await this.run_traversal(this.commandTrees, ()=>{})
+		//await this.run_traversal(this.commandTrees, ()=>{})
 	}
 
 
@@ -124,29 +138,16 @@ export class ProcessController {
 
 	async run_traversal(tree, replyFn) {
 		console.log('run traverse')
-		console.log(tree)
-		console.log(typeof tree)
-		console.log(tree['standard']['subtree'])
-		console.log('after')
-		/*this.mainWindow.addEventListener('keydown', (ev) => {
-			//log.debug(ev)
-			if (this.active) {
-				try {
-					this.traversal.processKeyEvent(ev.key)
-				} catch (e) {
-				}
-			}
-		}, true)*/
 		console.log('activated selection')
 		await this.activateSelection(tree, replyFn)
 	}
 
 
 	async activateSelection(tree, replyCb) {
-		this.traversal.callback = replyCb
-		await this.traversal.resetContext(tree['standard'])
+		await this.traversal.resetContext(tree)
 		this.active = true
 		this.mainWindow.show()
+		this.mainWindow.focus()
 	}
 
 	async deactivateSelection() {

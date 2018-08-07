@@ -8,9 +8,11 @@ var ProcessInterface = /** @class */ (function () {
         this.port = port;
         this.dataHooks = dataHooks;
         logger_1.log.debug('Created ProcessInterface');
+        this.createConnection(this.port);
     }
     ProcessInterface.prototype.createConnection = function (port) {
         var _this = this;
+        logger_1.log.debug('creating ipc socket on port ' + port);
         this.socket = net.createConnection(port, function (sock) {
             sock.on('data', function (msg) {
                 logger_1.log.debug('ProcessInterface received a message');
@@ -19,6 +21,7 @@ var ProcessInterface = /** @class */ (function () {
         });
     };
     ProcessInterface.prototype.handleIncoming = function (msg) {
+        logger_1.log.debug('handling incoming message');
         var type = msg.type, data = msg.data;
         this.dataHooks[type](data);
     };
@@ -44,19 +47,36 @@ var IpcServer = /** @class */ (function () {
     function IpcServer(path) {
         this.dataHooks = {};
         this.path = path;
+        logger_1.log.debug('creating server on ' + this.path);
+        this.createServer();
     }
     IpcServer.prototype.createServer = function () {
         var _this = this;
-        this.server = net.createServer();
-        this.server.listen(this.path);
-        this.server.on('connection', function (socket) {
-            socket.on('message', function (msg) {
-                _this.handleIncoming(_this.parse(msg), socket);
+        this.server = net.createServer(function (connect) {
+            connect.on('data', function (data) {
+                logger_1.log.debug('received data on ' + _this.path);
+                logger_1.log.debug(data.toString('utf-8'));
+                try {
+                    _this.handleIncoming(_this.parse(data.toString('utf-8')), connect);
+                }
+                catch (e) {
+                    logger_1.log.debug(e.message);
+                }
             });
         });
+        this.server.listen(this.path);
+        /*this.server.on('connection', (socket) => {
+            socket.on('message', (msg) => {
+                this.handleIncoming(
+                    this.parse(msg),
+                    socket
+                )
+            })
+        })*/
     };
     IpcServer.prototype.handleIncoming = function (msg, socket) {
-        var msgObj = JSON.parse(msg);
+        logger_1.log.debug(typeof msg);
+        //const msgObj = JSON.parse(msg)
         var type = msg.type, content = msg.content;
         this.dataHooks[type](content);
     };
