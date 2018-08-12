@@ -8816,3 +8816,307 @@ debug: Node is terminal
 debug: Checking command type
 debug: Executing shell command: 
 debug: qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Window Quick Tile Left"
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6602
+debug: Key press detected: Control
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6602
+debug: Key press detected: Control
+debug: Key press detected: Control
+debug: Key press detected: Alt
+debug: Key press detected: Control
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6602
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: Control
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: Control
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: Control
+debug: Key press detected: Escape
+debug: Terminated
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: T
+debug: Key press detected: Shift
+debug: Key press detected: Control
+debug: Key press detected: T
+debug: Key press detected: Control
+debug: Key press detected: Shift
+debug: Key press detected: Control
+debug: Key press detected: T
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: Control
+debug: Key press detected: Control
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: Control
+debug: Key press detected: c
+debug: Key press detected: Control
+debug: Key press detected: c
+debug: Key press detected: c
+debug: Key press detected: Control
+debug: Key press detected: Enter
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: Control
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: Control
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: Key press detected: l
+debug: Symbol found for transmitted key
+debug: Checking if node is terminal
+debug: updating view state
+debug: Key press detected: Escape
+debug: Terminated
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: Key press detected: l
+debug: Symbol found for transmitted key
+debug: Checking if node is terminal
+debug: updating view state
+debug: Key press detected: d
+debug: Symbol found for transmitted key
+debug: Checking if node is terminal
+debug: updating view state
+debug: Key press detected: Escape
+debug: Terminated
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: Key press detected: l
+debug: Symbol found for transmitted key
+debug: Checking if node is terminal
+debug: updating view state
+debug: Key press detected: Escape
+debug: Terminated
+debug: executing
+debug: initializing process controller
+debug: LABEL: desktop
+
+
+
+debug: LABEL: browser
+
+
+
+debug: creating server on 6601
+debug: Key press detected: Control
+debug: received data on 6601
+debug: {"type":"tree","content":"desktop"}
+
+debug: object
+debug: recieved tree request
+debug: Key press detected: l
+debug: Symbol found for transmitted key
+debug: Checking if node is terminal
+debug: updating view state
+debug: Key press detected: d
+debug: Symbol found for transmitted key
+debug: Checking if node is terminal
+debug: updating view state
+debug: Key press detected: Escape
+debug: Terminated

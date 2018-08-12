@@ -13,19 +13,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //import * from "React"
 var React = require("react");
 var electron_1 = require("electron");
-var mousetrap_1 = require("mousetrap");
 var AbstractView = /** @class */ (function (_super) {
     __extends(AbstractView, _super);
     function AbstractView(props) {
         var _this = _super.call(this, props) || this;
-        _this.trap = mousetrap_1.Mousetrap;
         console.log('instantiating view');
         _this.ipc = electron_1.ipcRenderer;
         _this.state = {
-            selections: [{
-                    symbol: "t",
-                    label: "test"
-                }]
+            items: []
         };
         window.addEventListener('keydown', function (ev) {
             console.log(ev);
@@ -37,10 +32,11 @@ var AbstractView = /** @class */ (function (_super) {
             _this.ipc.emit('key', ev.which);
         });
         _this.setState(_this.state);
-        _this.ipc.on('update', function (event, items) {
+        _this.ipc.on('update', function (event, state) {
             console.log('revieved update event');
+            console.log(state);
             _this.setState({
-                selections: items
+                items: state
             });
         });
         return _this;
@@ -51,6 +47,7 @@ var AbstractView = /** @class */ (function (_super) {
             _this.setState({
                 selections: items
             });
+            console.log(_this.state);
         };
     };
     AbstractView.prototype.viewCallbacks = function () {
@@ -58,15 +55,15 @@ var AbstractView = /** @class */ (function (_super) {
         return {
             update: this.stateUpdateCallback(),
             reset: function () { return _super.prototype.setState.call(_this, {
-                selections: []
+                items: []
             }); }
         };
     };
     AbstractView.prototype.render = function () {
-        var rows = this.state.selections.map(function (node) {
+        var rows = this.state.items.map(function (node) {
             return React.createElement("tr", { className: "list-row" },
-                React.createElement("td", { className: "list-key" }, node.symbol),
-                React.createElement("td", { className: "list-value" }, node.lab));
+                React.createElement("td", { className: (node.nested) ? 'nested-list-key' : 'list-key' }, node.symbol),
+                React.createElement("td", { className: (node.nested) ? 'nested-list-value' : 'list-value' }, node.lab));
         });
         return (React.createElement("table", { className: "list-table" },
             React.createElement("tbody", null, rows)));

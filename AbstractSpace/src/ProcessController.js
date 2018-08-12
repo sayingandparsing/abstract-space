@@ -47,6 +47,7 @@ var ipc_events_1 = require("./ipc/ipc-events");
 var ProcessController = /** @class */ (function () {
     function ProcessController(window) {
         this.path = 'display';
+        this.savedRefs = {};
         console.log('created process controller');
         this.mainWindow = window;
         this.view = new SingleViewService_1.SingleViewService(window);
@@ -57,9 +58,9 @@ var ProcessController = /** @class */ (function () {
     }
     ProcessController.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var parser, dispatchCommand, _i, _a, i;
+            var parser, dispatchCommand;
             var _this = this;
-            return __generator(this, function (_b) {
+            return __generator(this, function (_a) {
                 parser = new SpaceParser_1.SpaceParser('');
                 load_trees_1.loadTrees().forEach(function (config) { return __awaiter(_this, void 0, void 0, function () {
                     var lab, _a, _b, err_1;
@@ -71,11 +72,13 @@ var ProcessController = /** @class */ (function () {
                                 lab = config.tree.lab;
                                 _a = this.commandTrees;
                                 _b = lab;
-                                return [4 /*yield*/, parser.traverse(config.tree, config['tree']['lab'])];
+                                return [4 /*yield*/, parser.traverse(config.tree, config['tree']['lab'])
+                                    //console.log('COMMAND TREE:')
+                                ];
                             case 1:
                                 _a[_b] =
                                     _c.sent();
-                                console.log('COMMAND TREE:');
+                                //console.log('COMMAND TREE:')
                                 console.log(JSON.stringify(this.commandTrees[lab], null, 2));
                                 return [3 /*break*/, 3];
                             case 2:
@@ -113,7 +116,7 @@ var ProcessController = /** @class */ (function () {
                     });
                 }); });
                 this.requestListener =
-                    new ipc_1.IpcServer('6602')
+                    new ipc_1.IpcServer('6601')
                         .on('tree', function (msg) { return __awaiter(_this, void 0, void 0, function () {
                         var tree;
                         return __generator(this, function (_a) {
@@ -142,11 +145,6 @@ var ProcessController = /** @class */ (function () {
                         .on('quit', function () {
                         ipc_events_1.ipcEvents.emit('disconnect');
                     });
-                console.log('%j', this.commandTrees);
-                for (_i = 0, _a = Object.keys(this.commandTrees); _i < _a.length; _i++) {
-                    i = _a[_i];
-                    console.log(i);
-                }
                 return [2 /*return*/];
             });
         });

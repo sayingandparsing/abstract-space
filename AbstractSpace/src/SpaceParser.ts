@@ -5,6 +5,9 @@ import {
 	CmdType
 } from './cmd_types/command'
 import {log} from './util/logger'
+import {
+	NodeData
+} from './DataTypes'
 
 interface CT {
 
@@ -13,14 +16,15 @@ interface CT {
 interface Metadata {
 	symbol :string
 	lab :string
-	itemList :ListedItem[]
+	itemList? :ListedItem[]
+	nested :boolean
 }
 
 type Leaf = number
 
 interface Tree {
-	data :Metadata
-	[key :string]: Tree | Leaf | Metadata
+	data :NodeData
+	[key :string]: Tree | Leaf | NodeData | Tree[]
 }
 
 interface ListedItem {
@@ -49,18 +53,19 @@ export class SpaceParser {
 
 	async traverse (
 		tree,
-		symbol :String
-	) /*:Tree|Command*/ {
-		let result = {}
-		const data = {}
+		symbol :string
+	) :Promise<Tree> {
+		let result :Partial<Tree>= {}
+		const data :Partial<NodeData> = {}
 		if (tree instanceof Command) {
 			data['lab'] = tree.name
 			data['symbol'] = symbol
-			result['data'] = data
+			data['nested'] = false
+			result['data'] = <NodeData>data
 			result['command'] = this.registerCommand(tree)
 		}
 		else if (tree instanceof Object) {
-			const subtrees = []
+			const subtrees :Tree[]= []
 			for (let key of Object.keys(tree)) {
 				if (this.metadataFields.has(key)) {
 					data[key] = tree[key];
@@ -70,17 +75,19 @@ export class SpaceParser {
 				}
 			}
 			data['symbol'] = symbol
-			result['data'] = data
+			data['nested'] = true
+			result['data'] = <NodeData>data
 			result['subtree'] = subtrees
 		}
 		else if (tree instanceof Command) {
 			data['lab'] = tree.name
 			data['symbol'] = symbol
-			result['data'] = data
+			data['nested'] = true
+			result['data'] = <NodeData>data
 			result['command'] = this.registerCommand(tree)
 		}
 
-		return result
+		return <Tree> result
 	}
 
 	getId = () :number => {

@@ -1,6 +1,7 @@
 import {AbstractView} from './AbstractView'
 import * as React from "react"
-import {render} from "react-dom"
+import * as dom from "react-dom"
+import { ViewController } from '../ViewController';
 
 
 class Render {
@@ -8,7 +9,7 @@ class Render {
 	main = document.getElementById("main")
 	a = document.createElement("p")
 
-	view = render(
+	view :AbstractView = dom.render(
 		React.createElement(AbstractView, null),
 		this.main
 	)

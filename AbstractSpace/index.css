@@ -38,20 +38,29 @@ header h1 {
 
 }
 .list-key {
-	color: darkseagreen;
+	color: rgb(72, 155, 240);
 	text-align: center;
 }
 .list-value {
 	color: lightgoldenrodyellow;
 }
 
+.nested-list-key {
+	color: darkseagreen;
+	text-align: center;
+}
+.nested-list-value {
+	color: lightgoldenrodyellow;
+}
+
 .list-row {
 	width: 100%;
-
 	padding-top: 10em;
 	padding-bottom :10em;
 	background-color: #171717;
 }
+
+
 #border {
 	width: 100vw;
 	height: 100vh;

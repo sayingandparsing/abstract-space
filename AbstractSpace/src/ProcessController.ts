@@ -54,7 +54,7 @@ export class ProcessController {
 				const lab = config.tree.lab
 				this.commandTrees[lab] =
 					await parser.traverse(config.tree, config['tree']['lab'])
-				console.log('COMMAND TREE:')
+				//console.log('COMMAND TREE:')
 				console.log(JSON.stringify(this.commandTrees[lab],null, 2))
 
 
@@ -81,7 +81,7 @@ export class ProcessController {
 			await this.traversal.processKeyEvent(key)
 		})
 		this.requestListener =
-			new IpcServer('6602')
+			new IpcServer('6601')
 				.on('tree', async msg => {
 					log.debug('recieved tree request')
 					const tree = this.commandTrees[msg]
@@ -96,8 +96,8 @@ export class ProcessController {
 				.on('quit', () => {
 					ipcEvents.emit('disconnect')
 				})
-				console.log('%j', this.commandTrees)
-				for (let i of Object.keys(this.commandTrees)) console.log(i)
+				//console.log('%j', this.commandTrees)
+				//for (let i of Object.keys(this.commandTrees)) console.log(i)
 
 		//await this.run_traversal(this.commandTrees, ()=>{})
 		}

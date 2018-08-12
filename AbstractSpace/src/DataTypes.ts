@@ -38,7 +38,9 @@ export type Connections = NodeData[]
 
 export interface NodeData {
     symbol: NodeSymbol
-    name: string
+	lab: string
+	nested :boolean
+	fn ?: string
 }
 
 

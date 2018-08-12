@@ -62,6 +62,7 @@ var SpaceParser = /** @class */ (function () {
                         if (!(tree instanceof command_1.Command)) return [3 /*break*/, 1];
                         data['lab'] = tree.name;
                         data['symbol'] = symbol;
+                        data['nested'] = false;
                         result['data'] = data;
                         result['command'] = this.registerCommand(tree);
                         return [3 /*break*/, 8];
@@ -87,6 +88,7 @@ var SpaceParser = /** @class */ (function () {
                         return [3 /*break*/, 2];
                     case 6:
                         data['symbol'] = symbol;
+                        data['nested'] = true;
                         result['data'] = data;
                         result['subtree'] = subtrees;
                         return [3 /*break*/, 8];
@@ -94,6 +96,7 @@ var SpaceParser = /** @class */ (function () {
                         if (tree instanceof command_1.Command) {
                             data['lab'] = tree.name;
                             data['symbol'] = symbol;
+                            data['nested'] = true;
                             result['data'] = data;
                             result['command'] = this.registerCommand(tree);
                         }
