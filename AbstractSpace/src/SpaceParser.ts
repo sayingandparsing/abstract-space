@@ -51,20 +51,15 @@ export class SpaceParser {
 		tree,
 		symbol :String
 	) /*:Tree|Command*/ {
-		log.debug('starting traversal')
 		let result = {}
 		const data = {}
-		log.debug(typeof tree)
 		if (tree instanceof Command) {
-			log.debug('Registering command: ')
-			log.debug(<Command> tree.name)
 			data['lab'] = tree.name
 			data['symbol'] = symbol
 			result['data'] = data
 			result['command'] = this.registerCommand(tree)
 		}
 		else if (tree instanceof Object) {
-			log.debug('branches')
 			const subtrees = []
 			for (let key of Object.keys(tree)) {
 				if (this.metadataFields.has(key)) {
@@ -79,8 +74,6 @@ export class SpaceParser {
 			result['subtree'] = subtrees
 		}
 		else if (tree instanceof Command) {
-			log.debug('Registering command: ')
-			log.debug(<Command> tree.name)
 			data['lab'] = tree.name
 			data['symbol'] = symbol
 			result['data'] = data

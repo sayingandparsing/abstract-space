@@ -3,7 +3,7 @@
  */
 
 import {ViewController} from "./ViewController"
-import EventEmitter = require('events')
+import {EventEmitter} from 'events'
 import {
 	DescentContext,
 	NodeData,
@@ -39,14 +39,13 @@ export class TreeTraversal {
 		console.log('new traverser')
     }
 
-    async resetContext(root :RootNode)
+    async resetContext(nodePtr :RootNode)
     {
 		console.log('resetting context')
-		console.log(await root['subtree'])
         this.context = {
-            root: root,
-            current: root,
-            level: root.subtree.map(item => item.data),
+            root: nodePtr,
+            current: nodePtr,
+            level: nodePtr.subtree.map(item => item.data),
             path: []
         }
 		console.log(this.context.level)
@@ -71,8 +70,6 @@ export class TreeTraversal {
 			return
 		}
 		let symbols = this.context.level.map(node => node.symbol)
-		log.debug('symbols:')
-		log.debug(symbols)
         if (symbols.indexOf(key) > -1) {
     		log.debug("Symbol found for transmitted key")
             this.context.path.push(key)

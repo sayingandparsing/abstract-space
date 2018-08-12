@@ -7,13 +7,17 @@ import {log}               from './util/logger'
 import {SpaceParser}       from './SpaceParser'
 import {BrowserWindow, ipcMain}     from 'electron'
 import {CommandExecution} from './command/command-functions'
+import {loadTrees} from './trees/load-trees'
+import {ipcEvents} from './ipc/ipc-events'
 
 // const log = require('electron-log');
 // log.transports.file.level = 'debug';
 // log.transports.file.file = __dirname + 'log.log';
 // log.debug(log)
-import {tree} from './trees/desktop'
-
+export interface Context {
+	path: string[]
+	tree: string
+}
 
 export class ProcessController {
 
@@ -21,13 +25,15 @@ export class ProcessController {
 	mainWindow  :BrowserWindow
 	viewService :SingleViewService
 	traversal   :TreeTraversal
-	commandTrees
+	commandTrees :Object
 	dispatch :CommandExecution
 	requestListener :IpcServer
 	ipc
 	path = 'display'
 	socket :ProcessInterface
 	view
+	context
+	savedRefs :Object = {}
 
 	constructor(window) {
 		console.log('created process controller')
@@ -38,69 +44,27 @@ export class ProcessController {
 		this.commandTrees = {}
 
 		this.start()
-		/*this.socket =
-			new ProcessInterface('6601')
-				.on('standard')
-
-
-		/*this.ipc = new RabbitServer(this.path)
-			.on('tree', (content, replyCb) => {
-				log.debug('received tree')
-				let name = content['data']['symbol']
-				this.commandTrees[name] = content
-				//log.debug(this.commandTrees)
-				//log.debug('added ' + name)
-			})
-			.on(['display', 'tree'], (content, replyCb) => {
-				let requestedTree = this.commandTrees['standard']
-				log.debug('received display request')
-				if (requestedTree !== null) {
-					//log.debug(requestedTree)
-					this.run_traversal(requestedTree, replyCb)
-				} else {
-					log.error('couldn+\'t find a tree called ' + content)
-					replyCb({type: 'failed'})
-				}
-			})
-			.on('chain view', (content, replyCb) => {
-				this.viewService.display(content, replyCb)
-			})
-			.on('end chain', (content, replyCb) => {
-				this.viewService.breakChain()
-			})
-			/*.on(['display', 'appTree'] , (content, replyCb) => {
-				log.debug('received app tree')
-				let requestedTree = this.commandTrees['app_specific'][content.name]
-				log.debug('requested tree = '+content.name)
-				if (requestedTree !== null)
-					this.run_traversal(requestedTree, replyCb)
-				else {
-					log.debug('couldn+\'t find a tree called ' + content)
-					replyCb({type: 'failed'})
-				}
-			})
-			.createServer()*/
 	}
 
 	async start() {
 		const parser = new SpaceParser('')
-		this.commandTrees['standard'] =
-			await parser.traverse(tree, 'standard')
-		ipcMain.on('key', async (ev, key) => {
-			await this.traversal.processKeyEvent(key)
-		})
-		this.requestListener =
-			new IpcServer('6601')
-				.on('tree', async msg => {
-					try {
-						log.debug('recieved tree request')
-						console.log('%j', this.commandTrees)
-						await this.run_traversal(this.commandTrees[msg], ()=>{})
-					} catch {
-						log.debug('no tree found for request '+msg)
-					}
+		loadTrees().forEach(async config => {
+			try {
+				log.debug("LABEL: "+config.tree.lab+'\n\n\n')
+				const lab = config.tree.lab
+				this.commandTrees[lab] =
+					await parser.traverse(config.tree, config['tree']['lab'])
+				console.log('COMMAND TREE:')
+				console.log(JSON.stringify(this.commandTrees[lab],null, 2))
 
-				})
+
+			}
+			catch (err) {
+				log.error('CONFIG WARNING: tree not loaded')
+				console.log(err)
+			}
+		})
+
 		this.dispatch = new CommandExecution(parser.commands)
 		const dispatchCommand :Function =
 			async (cmdId) => {
@@ -113,8 +77,30 @@ export class ProcessController {
 			this.deactivateSelection,
 			this.mainWindow
 		)
+		ipcMain.on('key', async (ev, key) => {
+			await this.traversal.processKeyEvent(key)
+		})
+		this.requestListener =
+			new IpcServer('6602')
+				.on('tree', async msg => {
+					log.debug('recieved tree request')
+					const tree = this.commandTrees[msg]
+					if (tree!==undefined) {
+						await this.run_traversal(tree, ()=>{})
+					}
+					else
+						log.debug('no tree found for request '+msg)
+
+				})
+				.on('reload', async msg => await this.reload())
+				.on('quit', () => {
+					ipcEvents.emit('disconnect')
+				})
+				console.log('%j', this.commandTrees)
+				for (let i of Object.keys(this.commandTrees)) console.log(i)
+
 		//await this.run_traversal(this.commandTrees, ()=>{})
-	}
+		}
 
 
 	async processDisplayRequest(msg) {
@@ -137,18 +123,12 @@ export class ProcessController {
 
 
 	async run_traversal(tree, replyFn) {
-		console.log('run traverse')
-		console.log('activated selection')
-		await this.activateSelection(tree, replyFn)
-	}
-
-
-	async activateSelection(tree, replyCb) {
 		await this.traversal.resetContext(tree)
 		this.active = true
 		this.mainWindow.show()
 		this.mainWindow.focus()
 	}
+
 
 	async deactivateSelection() {
 		this.active = false
@@ -161,6 +141,19 @@ export class ProcessController {
 
 	publishTraversalState(state) {
 
+	}
+
+	async reload() {
+		log.debug('Reloading configuration')
+		ipcEvents.emit('disconnect')
+		await this.sleep(3000)
+		await this.start()
+	}
+
+	async sleep(ms) {
+		return new Promise(resolve=>{
+			setTimeout(resolve,ms)
+		})
 	}
 }
 log.debug('executing')

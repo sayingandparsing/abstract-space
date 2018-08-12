@@ -42,11 +42,8 @@ var logger_1 = require("./util/logger");
 var SpaceParser_1 = require("./SpaceParser");
 var electron_1 = require("electron");
 var command_functions_1 = require("./command/command-functions");
-// const log = require('electron-log');
-// log.transports.file.level = 'debug';
-// log.transports.file.file = __dirname + 'log.log';
-// log.debug(log)
-var desktop_1 = require("./trees/desktop");
+var load_trees_1 = require("./trees/load-trees");
+var ipc_events_1 = require("./ipc/ipc-events");
 var ProcessController = /** @class */ (function () {
     function ProcessController(window) {
         this.path = 'display';
@@ -57,112 +54,100 @@ var ProcessController = /** @class */ (function () {
         logger_1.log.debug('initializing process controller');
         this.commandTrees = {};
         this.start();
-        /*this.socket =
-            new ProcessInterface('6601')
-                .on('standard')
-
-
-        /*this.ipc = new RabbitServer(this.path)
-            .on('tree', (content, replyCb) => {
-                log.debug('received tree')
-                let name = content['data']['symbol']
-                this.commandTrees[name] = content
-                //log.debug(this.commandTrees)
-                //log.debug('added ' + name)
-            })
-            .on(['display', 'tree'], (content, replyCb) => {
-                let requestedTree = this.commandTrees['standard']
-                log.debug('received display request')
-                if (requestedTree !== null) {
-                    //log.debug(requestedTree)
-                    this.run_traversal(requestedTree, replyCb)
-                } else {
-                    log.error('couldn+\'t find a tree called ' + content)
-                    replyCb({type: 'failed'})
-                }
-            })
-            .on('chain view', (content, replyCb) => {
-                this.viewService.display(content, replyCb)
-            })
-            .on('end chain', (content, replyCb) => {
-                this.viewService.breakChain()
-            })
-            /*.on(['display', 'appTree'] , (content, replyCb) => {
-                log.debug('received app tree')
-                let requestedTree = this.commandTrees['app_specific'][content.name]
-                log.debug('requested tree = '+content.name)
-                if (requestedTree !== null)
-                    this.run_traversal(requestedTree, replyCb)
-                else {
-                    log.debug('couldn+\'t find a tree called ' + content)
-                    replyCb({type: 'failed'})
-                }
-            })
-            .createServer()*/
     }
     ProcessController.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var parser, _a, _b, dispatchCommand;
+            var parser, dispatchCommand, _i, _a, i;
             var _this = this;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        parser = new SpaceParser_1.SpaceParser('');
-                        _a = this.commandTrees;
-                        _b = 'standard';
-                        return [4 /*yield*/, parser.traverse(desktop_1.tree, 'standard')];
-                    case 1:
-                        _a[_b] =
-                            _c.sent();
-                        electron_1.ipcMain.on('key', function (ev, key) { return __awaiter(_this, void 0, void 0, function () {
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0: return [4 /*yield*/, this.traversal.processKeyEvent(key)];
-                                    case 1:
-                                        _a.sent();
-                                        return [2 /*return*/];
-                                }
-                            });
-                        }); });
-                        this.requestListener =
-                            new ipc_1.IpcServer('6601')
-                                .on('tree', function (msg) { return __awaiter(_this, void 0, void 0, function () {
-                                var _a;
-                                return __generator(this, function (_b) {
-                                    switch (_b.label) {
-                                        case 0:
-                                            _b.trys.push([0, 2, , 3]);
-                                            logger_1.log.debug('recieved tree request');
-                                            console.log('%j', this.commandTrees);
-                                            return [4 /*yield*/, this.run_traversal(this.commandTrees[msg], function () { })];
-                                        case 1:
-                                            _b.sent();
-                                            return [3 /*break*/, 3];
-                                        case 2:
-                                            _a = _b.sent();
-                                            logger_1.log.debug('no tree found for request ' + msg);
-                                            return [3 /*break*/, 3];
-                                        case 3: return [2 /*return*/];
-                                    }
-                                });
-                            }); });
-                        this.dispatch = new command_functions_1.CommandExecution(parser.commands);
-                        dispatchCommand = function (cmdId) { return __awaiter(_this, void 0, void 0, function () {
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        logger_1.log.debug('Sending command to dispatcher:');
-                                        logger_1.log.debug(cmdId);
-                                        return [4 /*yield*/, this.dispatch.executeCommand(cmdId)];
-                                    case 1:
-                                        _a.sent();
-                                        return [2 /*return*/];
-                                }
-                            });
-                        }); };
-                        this.traversal = new TreeTraversal_1.TreeTraversal(this.dispatch, this.deactivateSelection, this.mainWindow);
-                        return [2 /*return*/];
+            return __generator(this, function (_b) {
+                parser = new SpaceParser_1.SpaceParser('');
+                load_trees_1.loadTrees().forEach(function (config) { return __awaiter(_this, void 0, void 0, function () {
+                    var lab, _a, _b, err_1;
+                    return __generator(this, function (_c) {
+                        switch (_c.label) {
+                            case 0:
+                                _c.trys.push([0, 2, , 3]);
+                                logger_1.log.debug("LABEL: " + config.tree.lab + '\n\n\n');
+                                lab = config.tree.lab;
+                                _a = this.commandTrees;
+                                _b = lab;
+                                return [4 /*yield*/, parser.traverse(config.tree, config['tree']['lab'])];
+                            case 1:
+                                _a[_b] =
+                                    _c.sent();
+                                console.log('COMMAND TREE:');
+                                console.log(JSON.stringify(this.commandTrees[lab], null, 2));
+                                return [3 /*break*/, 3];
+                            case 2:
+                                err_1 = _c.sent();
+                                logger_1.log.error('CONFIG WARNING: tree not loaded');
+                                console.log(err_1);
+                                return [3 /*break*/, 3];
+                            case 3: return [2 /*return*/];
+                        }
+                    });
+                }); });
+                this.dispatch = new command_functions_1.CommandExecution(parser.commands);
+                dispatchCommand = function (cmdId) { return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                logger_1.log.debug('Sending command to dispatcher:');
+                                logger_1.log.debug(cmdId);
+                                return [4 /*yield*/, this.dispatch.executeCommand(cmdId)];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); };
+                this.traversal = new TreeTraversal_1.TreeTraversal(this.dispatch, this.deactivateSelection, this.mainWindow);
+                electron_1.ipcMain.on('key', function (ev, key) { return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, this.traversal.processKeyEvent(key)];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                this.requestListener =
+                    new ipc_1.IpcServer('6602')
+                        .on('tree', function (msg) { return __awaiter(_this, void 0, void 0, function () {
+                        var tree;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    logger_1.log.debug('recieved tree request');
+                                    tree = this.commandTrees[msg];
+                                    if (!(tree !== undefined)) return [3 /*break*/, 2];
+                                    return [4 /*yield*/, this.run_traversal(tree, function () { })];
+                                case 1:
+                                    _a.sent();
+                                    return [3 /*break*/, 3];
+                                case 2:
+                                    logger_1.log.debug('no tree found for request ' + msg);
+                                    _a.label = 3;
+                                case 3: return [2 /*return*/];
+                            }
+                        });
+                    }); })
+                        .on('reload', function (msg) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, this.reload()];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); })
+                        .on('quit', function () {
+                        ipc_events_1.ipcEvents.emit('disconnect');
+                    });
+                console.log('%j', this.commandTrees);
+                for (_i = 0, _a = Object.keys(this.commandTrees); _i < _a.length; _i++) {
+                    i = _a[_i];
+                    console.log(i);
                 }
+                return [2 /*return*/];
             });
         });
     };
@@ -194,21 +179,6 @@ var ProcessController = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        console.log('run traverse');
-                        console.log('activated selection');
-                        return [4 /*yield*/, this.activateSelection(tree, replyFn)];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ProcessController.prototype.activateSelection = function (tree, replyCb) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
                     case 0: return [4 /*yield*/, this.traversal.resetContext(tree)];
                     case 1:
                         _a.sent();
@@ -230,6 +200,33 @@ var ProcessController = /** @class */ (function () {
         });
     };
     ProcessController.prototype.publishTraversalState = function (state) {
+    };
+    ProcessController.prototype.reload = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        logger_1.log.debug('Reloading configuration');
+                        ipc_events_1.ipcEvents.emit('disconnect');
+                        return [4 /*yield*/, this.sleep(3000)];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.start()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProcessController.prototype.sleep = function (ms) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve) {
+                        setTimeout(resolve, ms);
+                    })];
+            });
+        });
     };
     return ProcessController;
 }());

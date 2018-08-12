@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var command_1 = require("../cmd_types/command");
 var C = command_1.MsgCommandFacory('vivaldi');
 exports.tree = {
-    lab: 'vivaldi',
+    lab: 'browser',
     t: {
         lab: 'tab',
         fn: 'fn(tab)',

@@ -38,44 +38,36 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var EventEmitter = require("events");
+var events_1 = require("events");
 var logger_1 = require("./util/logger");
 var TreeTraversal = /** @class */ (function () {
     //type NodeSymbol = String
     function TreeTraversal(execution, deactivate, window) {
-        this.viewEmitter = new EventEmitter();
+        this.viewEmitter = new events_1.EventEmitter();
         this.deactivate = deactivate;
         this.mainWindow = window;
         this.execution = execution;
         console.log('new traverser');
     }
-    TreeTraversal.prototype.resetContext = function (root) {
+    TreeTraversal.prototype.resetContext = function (nodePtr) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b;
             var _this = this;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        console.log('resetting context');
-                        _b = (_a = console).log;
-                        return [4 /*yield*/, root['subtree']];
-                    case 1:
-                        _b.apply(_a, [_c.sent()]);
-                        this.context = {
-                            root: root,
-                            current: root,
-                            level: root.subtree.map(function (item) { return item.data; }),
-                            path: []
-                        };
-                        console.log(this.context.level);
-                        console.log('sending update command');
-                        this.mainWindow.webContents.once('dom-ready', function () {
-                            console.log('dom ready');
-                            _this.mainWindow.webContents.send('update', _this.context.level);
-                        });
-                        this.mainWindow.webContents.send('update', this.context.level);
-                        return [2 /*return*/];
-                }
+            return __generator(this, function (_a) {
+                console.log('resetting context');
+                this.context = {
+                    root: nodePtr,
+                    current: nodePtr,
+                    level: nodePtr.subtree.map(function (item) { return item.data; }),
+                    path: []
+                };
+                console.log(this.context.level);
+                console.log('sending update command');
+                this.mainWindow.webContents.once('dom-ready', function () {
+                    console.log('dom ready');
+                    _this.mainWindow.webContents.send('update', _this.context.level);
+                });
+                this.mainWindow.webContents.send('update', this.context.level);
+                return [2 /*return*/];
             });
         });
     };
@@ -96,8 +88,6 @@ var TreeTraversal = /** @class */ (function () {
                             return [2 /*return*/];
                         }
                         symbols = this.context.level.map(function (node) { return node.symbol; });
-                        logger_1.log.debug('symbols:');
-                        logger_1.log.debug(symbols);
                         if (!(symbols.indexOf(key) > -1)) return [3 /*break*/, 3];
                         logger_1.log.debug("Symbol found for transmitted key");
                         this.context.path.push(key);

@@ -32,7 +32,11 @@ const Shl = (name :string) => {
 
 const cmds = {
 	'ranger': 'alacritty -e ranger',
-	'update': 'trizen -Syyu'
+	'update': 'trizen -Syyu',
+	'python': 'alacritty -e ipython',
+	'ammonite': 'alacritty -e ammonite',
+	'intellij': 'intellij-idea-ultimate-edition'
+
 
 }
 
@@ -41,23 +45,44 @@ export const tree = {
 	l: {
 		lab: 'launch',
 		b: Sh('vivaldi', 'vivaldi-stable'),
+		d: {
+			lab: 'development',
+			p: Shl('python'),
+			a: Shl('ammonite'),
+			i: Shl('intellij')
+		},
 		e: Sh('vs code', 'code'),
-		r: Shl('ranger')
+		r: Sh('ranger', 'alacritty -e ranger'),
+		f: Sh('firefox'),
+		s: {
+			lab: 'system',
+
+
+		}
 
 
 	},
 	w: {
 		lab: 'window',
 		fn: 'fn($window)',
-		c: Kde('close'),
-        m: Kde('maximize'),
+		c: Kde('Window Close', 'close'),
+		m: Kde('Window Maximize', 'maximize'),
+		h: Kde('Window Minimize', 'hide'),
         l: Kde('Window Quick Tile Left', 'left'),
         r: Kde('Window Quick Tile Right', 'right'),
-        e: Kde('Expose', 'expose')
+		e: Kde('Expose', 'expose'),
+		d: {
+			lab: 'desktop',
+			d: Kde('Switch One Desktop Down', 'down'),
+			u: Kde('Switch One Desktop Up', 'up'),
+		}
 	},
 
 	s: {
 		lab: 'system',
-		u:
+		u: '',
+		l: {
+			lab: 'logs',
+		}
 	}
 }

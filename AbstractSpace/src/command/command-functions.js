@@ -35,12 +35,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var ipc_1 = require("../ipc");
 var command_1 = require("../cmd_types/command");
 var child_process = require("child_process");
 var logger_1 = require("../util/logger");
 var CommandExecution = /** @class */ (function () {
     function CommandExecution(commands) {
+        var _this = this;
+        this.services = {};
+        this.ports = {
+            firefox: '6543'
+        };
         this.commands = commands;
+        Object.entries(this.ports).forEach(function (_a) {
+            var k = _a[0], v = _a[1];
+            return _this.services[k] = new ipc_1.IpcSocket(v);
+        });
     }
     CommandExecution.prototype.keyseq = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -49,14 +59,19 @@ var CommandExecution = /** @class */ (function () {
             });
         });
     };
-    CommandExecution.prototype.message = function (service, type, message) {
+    CommandExecution.prototype.message = function (service, msg) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                try {
-                    this.services[service](type, message);
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, , 2, 3]);
+                        return [4 /*yield*/, this.services[service].send(msg)];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2: return [7 /*endfinally*/];
+                    case 3: return [2 /*return*/];
                 }
-                finally { }
-                return [2 /*return*/];
             });
         });
     };
@@ -76,8 +91,18 @@ var CommandExecution = /** @class */ (function () {
                         return [4 /*yield*/, this.executeShellCommand(cmd)];
                     case 1:
                         _a.sent();
-                        _a.label = 2;
-                    case 2: return [2 /*return*/];
+                        return [3 /*break*/, 6];
+                    case 2:
+                        if (!(cmd instanceof command_1.MsgCommand)) return [3 /*break*/, 6];
+                        _a.label = 3;
+                    case 3:
+                        _a.trys.push([3, , 5, 6]);
+                        return [4 /*yield*/, this.services[cmd.recip].send(cmd.msg)];
+                    case 4:
+                        _a.sent();
+                        return [3 /*break*/, 6];
+                    case 5: return [7 /*endfinally*/];
+                    case 6: return [2 /*return*/];
                 }
             });
         });
@@ -86,6 +111,13 @@ var CommandExecution = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 child_process.exec(cmd.cmd);
+                return [2 /*return*/];
+            });
+        });
+    };
+    CommandExecution.prototype.disconnectAll = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 return [2 /*return*/];
             });
         });

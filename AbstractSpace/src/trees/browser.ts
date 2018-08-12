@@ -6,7 +6,7 @@ import {
 const C = MsgCommandFacory('vivaldi')
 
 export const tree = {
-	lab: 'vivaldi',
+	lab: 'browser',
 	t: {
 		lab: 'tab',
 		fn: 'fn(tab)',

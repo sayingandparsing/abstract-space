@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var command_1 = require("./cmd_types/command");
-var logger_1 = require("./util/logger");
 var SpaceParser = /** @class */ (function () {
     function SpaceParser(structureDir) {
         var _this = this;
@@ -58,13 +57,9 @@ var SpaceParser = /** @class */ (function () {
             return __generator(this, function (_d) {
                 switch (_d.label) {
                     case 0:
-                        logger_1.log.debug('starting traversal');
                         result = {};
                         data = {};
-                        logger_1.log.debug(typeof tree);
                         if (!(tree instanceof command_1.Command)) return [3 /*break*/, 1];
-                        logger_1.log.debug('Registering command: ');
-                        logger_1.log.debug(tree.name);
                         data['lab'] = tree.name;
                         data['symbol'] = symbol;
                         result['data'] = data;
@@ -72,7 +67,6 @@ var SpaceParser = /** @class */ (function () {
                         return [3 /*break*/, 8];
                     case 1:
                         if (!(tree instanceof Object)) return [3 /*break*/, 7];
-                        logger_1.log.debug('branches');
                         subtrees = [];
                         _i = 0, _a = Object.keys(tree);
                         _d.label = 2;
@@ -98,8 +92,6 @@ var SpaceParser = /** @class */ (function () {
                         return [3 /*break*/, 8];
                     case 7:
                         if (tree instanceof command_1.Command) {
-                            logger_1.log.debug('Registering command: ');
-                            logger_1.log.debug(tree.name);
                             data['lab'] = tree.name;
                             data['symbol'] = symbol;
                             result['data'] = data;
