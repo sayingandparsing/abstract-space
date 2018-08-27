@@ -1,2 +1,5 @@
-AbstractSpace/npm_modules/
-AbstractSpace/dist/
+AbstractSpace/npm_modules/*
+AbstractSpace/dist/*
+*.js
+*.js.map
+*.log

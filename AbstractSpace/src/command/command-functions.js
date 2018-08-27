@@ -44,7 +44,7 @@ var CommandExecution = /** @class */ (function () {
         var _this = this;
         this.services = {};
         this.ports = {
-            firefox: '6543'
+            firefox: '6542'
         };
         this.commands = commands;
         Object.entries(this.ports).forEach(function (_a) {
