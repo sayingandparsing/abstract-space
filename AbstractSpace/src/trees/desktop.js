@@ -43,6 +43,7 @@ exports.tree = {
         f: Sh('firefox'),
         s: {
             lab: 'system',
+            s: Sh('settings', 'systemsettings5')
         }
     },
     w: {

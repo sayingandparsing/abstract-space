@@ -56,6 +56,7 @@ export const tree = {
 		f: Sh('firefox'),
 		s: {
 			lab: 'system',
+			s: Sh('settings', 'systemsettings5')
 
 
 		}

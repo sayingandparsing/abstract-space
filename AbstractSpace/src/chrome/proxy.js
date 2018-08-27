@@ -36,37 +36,49 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs = require("fs");
-var ipc_1 = require("../ipc");
+var net = require("net");
 var ChromeMessageProxy = /** @class */ (function () {
     function ChromeMessageProxy(port) {
         var _this = this;
-        process.stdin.on('readable', function () {
-            fs.writeFile('/home/reagan/test/nativeMess.txt', ' ', function () { });
-            _this.sendMessage(JSON.stringify({ text: 'I am alone in this world' }));
+        process.stdin.on('readable', function () { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
+        }); });
+        this.commandServer = new net.Socket({
+            readable: true,
+            writable: true,
+            allowHalfOpen: true
         });
-        this.commandServer =
-            new ipc_1.IpcServer(port)
-                .on('command', function (msg) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, this.sendMessage(JSON.stringify({ text: msg.command }))];
-                        case 1:
-                            _a.sent();
-                            return [2 /*return*/];
-                    }
-                });
-            }); });
+        this.commandServer.connect({
+            port: 6542,
+        });
+        this.commandServer.on('data', function () { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    //fs.writeFile('/home/reagan/test/gotIt.txt', 'one instance', ()=>{})
+                    return [4 /*yield*/, this.sendMessage(JSON.stringify({ text: 'hello firefox' }))];
+                    case 1:
+                        //fs.writeFile('/home/reagan/test/gotIt.txt', 'one instance', ()=>{})
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        //new IpcSocket(port).createConnection()
+        // .on('command', async (msg) => {
+        // 	await this.sendMessage(JSON.stringify({text: msg.command}))
+        // })
     }
     ChromeMessageProxy.prototype.sendMessage = function (msg) {
         return __awaiter(this, void 0, void 0, function () {
             var buffer, len, lenBuff;
             return __generator(this, function (_a) {
-                fs.writeFile('/home/reagan/test/nativeMessReply.txt', ' ', function () { });
                 buffer = Buffer.from(msg, 'utf-8');
                 len = buffer.length;
                 lenBuff = Buffer.alloc(4);
-                lenBuff.writeInt32LE(len, 0);
+                lenBuff.writeUInt32LE(len, 0);
                 process.stdout.write(Buffer.concat([lenBuff, buffer]));
                 return [2 /*return*/];
             });
@@ -74,5 +86,5 @@ var ChromeMessageProxy = /** @class */ (function () {
     };
     return ChromeMessageProxy;
 }());
-var proxy = new ChromeMessageProxy('6888');
+var proxy = new ChromeMessageProxy('6542');
 //# sourceMappingURL=proxy.js.map

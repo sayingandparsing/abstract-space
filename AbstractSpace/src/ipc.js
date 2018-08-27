@@ -147,6 +147,9 @@ var IpcSocket = /** @class */ (function () {
             writable: true,
             allowHalfOpen: true
         });
+        this.socket.connect({
+            port: Number.parseInt(this.port)
+        });
     };
     IpcSocket.prototype.send = function (msg) {
         return __awaiter(this, void 0, void 0, function () {

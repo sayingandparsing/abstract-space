@@ -3,7 +3,7 @@ import {
 	MsgCommandFacory
 } from '../cmd_types/command'
 
-const C = MsgCommandFacory('vivaldi')
+const C = MsgCommandFacory('firefox')
 
 export const tree = {
 	lab: 'browser',

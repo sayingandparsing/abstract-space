@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var command_1 = require("../cmd_types/command");
-var C = command_1.MsgCommandFacory('vivaldi');
+var C = command_1.MsgCommandFacory('firefox');
 exports.tree = {
     lab: 'browser',
     t: {

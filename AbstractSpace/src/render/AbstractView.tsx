@@ -29,7 +29,7 @@ export class AbstractView extends React.Component {
 		console.log('instantiating view')
 		this.ipc = ipcRenderer
 		this.state = {
-			items :[]
+			items: []
 		}
 
 		window.addEventListener('keydown', (ev) => {
