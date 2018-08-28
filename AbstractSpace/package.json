@@ -12,8 +12,8 @@
   },
   "scripts": {
     "test": "xo",
-    "start": "electron ./index.js",
-    "dev": "tsc && webpack && electron ./index.js",
+    "start": "electron ./out/index.js",
+    "dev": "tsc && webpack && electron ./out/index.js",
     "build": "electron-packager . --out=dist --asar --overwrite --all",
     "compile": "tsc && webpack"
   },

@@ -16,7 +16,7 @@ let options ={
 			loaders: ['ts-loader'],
 			exclude: /node_modules/,
 			include: [
-				path.resolve(__dirname, "src/render/")
+				path.resolve(__dirname, "out/src/render/")
 			],
 		},
 		{
@@ -24,7 +24,7 @@ let options ={
 			//loaders: ['babel'],
 			exclude: /node_modules/,
 			include: [
-				path.resolve(__dirname, "src/render/")
+				path.resolve(__dirname, "out/src/render/")
 			],
 			use: [
 				 {
@@ -49,7 +49,7 @@ let options ={
 		extensions: ['.webpack.js', '.web.js', /*'.ts', '.tsx',*/ '.jsx', '.js'],
 		//packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
 	},
-	context: path.join(__dirname, 'src'),
+	context: path.join(__dirname, 'out/src'),
 	entry: './render/Render.js',
 	target: 'electron-renderer',
 	externals: [ nodeExternals()

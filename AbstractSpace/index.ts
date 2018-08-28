@@ -42,8 +42,8 @@ function createMainWindow() {
 				    display.height-winHeight)
 	//win.loadURL('file:///home/reagan/code/proj/abstract-space/AbstractSpace/index.html')
 	//win.loadURL(`C:\\Users\\rmacc\\code\\proj\\AbstractSpace\\index.html`)
-	win.loadURL(`file://${__dirname}/index.html`);
-	console.log(`file://${__dirname}/index.html`)
+	win.loadURL(`file://${__dirname}/../index.html`);
+	console.log(`file://${__dirname}/../index.html`)
 	win.on('closed', onClosed);
 	//win.hide()
 	return win;

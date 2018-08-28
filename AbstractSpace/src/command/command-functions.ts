@@ -15,16 +15,17 @@ export class CommandExecution {
 	services :{[key:string]: IpcSocket} = {}
 	commands :{[key:number]: Command}
 	ports :{[key:string]: string} = {
-		firefox: '6542'
+		//firefox: '6542'
 	}
 
 	constructor (
 		commands :{[key:number]:Command}
 	) {
+        log.debug('initializing command execution module')
 		this.commands = commands
-		Object.entries(this.ports).forEach(([k,v]) =>
+		/*Object.entries(this.ports).forEach(([k,v]) =>
 				this.services[k] = new IpcSocket(v)
-		)
+		)*/
 	}
 
 	async keyseq() {

@@ -47,42 +47,41 @@ export class ProcessController {
 
     async start() {
         const parser = new SpaceParser('')
+        log.debug('loading trees')
         loadTrees().forEach(async config => {
             try {
-                log.debug("LABEL: "+config.tree.lab+'\n\n\n')
+                log.debug("LABEL: "+config.tree.lab)
                 const lab = config.tree.lab
                 this.commandTrees[lab] =
                     await parser.traverse(config.tree, config['tree']['lab'])
                 //console.log('COMMAND TREE:')
-                console.log(JSON.stringify(this.commandTrees[lab],null, 2))
-
-
             }
             catch (err) {
                 log.error('CONFIG WARNING: tree not loaded')
                 console.log(err)
             }
         })
+        log.debug('done loading trees')
 
         this.dispatch = new CommandExecution(parser.commands)
-        const dispatchCommand :Function =
+
+        log.debug('created command execution')
+/*         const dispatchCommand :Function =
             async (cmdId) => {
                 log.debug('Sending command to dispatcher:')
                 log.debug(cmdId)
                 await this.dispatch.executeCommand(cmdId)
-            }
+            } */
         this.traversal = new TreeTraversal(
             this.dispatch,
             this.deactivateSelection,
             this.mainWindow
         )
-        ipcMain.on('key', async (ev, key) => {
-            await this.traversal.processKeyEvent(key)
-        })
+        log.debug('Creating request listener')
         this.requestListener =
-            new IpcServer('6601')
+            new IpcServer('6602')
                 .on('tree', async msg => {
-                    log.debug('recieved tree request')
+                    log.debug('received tree request')
                     const tree = this.commandTrees[msg]
                     if (tree!==undefined) {
                         await this.run_traversal(tree, ()=>{})
@@ -99,6 +98,9 @@ export class ProcessController {
                 //for (let i of Object.keys(this.commandTrees)) console.log(i)
 
         //await this.run_traversal(this.commandTrees, ()=>{})
+            ipcMain.on('key', async (ev, key) => {
+                await this.traversal.processKeyEvent(key)
+            })
         }
 
 

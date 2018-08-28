@@ -1,0 +1,7 @@
+npm_modules/
+out/
+output/
+dist/
+*.js
+*.js.map
+*.log
