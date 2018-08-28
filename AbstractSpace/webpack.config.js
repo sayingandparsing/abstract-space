@@ -49,7 +49,7 @@ let options ={
 		extensions: ['.webpack.js', '.web.js', /*'.ts', '.tsx',*/ '.jsx', '.js'],
 		//packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
 	},
-	context: path.join(__dirname, 'src'),
+	context: path.join(__dirname, 'out/src'),
 	entry: './render/Render.js',
 	target: 'electron-renderer',
 	externals: [ nodeExternals()

@@ -80,7 +80,7 @@ export class ProcessController {
             await this.traversal.processKeyEvent(key)
         })
         this.requestListener =
-            new IpcServer('6601')
+            new IpcServer('6602')
                 .on('tree', async msg => {
                     log.debug('recieved tree request')
                     const tree = this.commandTrees[msg]

@@ -1,5 +1,6 @@
 AbstractSpace/npm_modules/*
 AbstractSpace/dist/*
+AbstractSpace/out/*
 *.js
 *.js.map
 *.log

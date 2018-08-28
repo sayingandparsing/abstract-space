@@ -1,1 +1,186 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/home/reagan/code/proj/abstract-space/AbstractSpace/src",n(n.s=4)}([function(e,t){e.exports=require("react")},function(e,t){e.exports=require("react-dom")},function(e,t){e.exports=require("electron")},function(e,t,n){"use strict";var r,o=(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var c=n(0),i=n(2),s=function(e){function t(t){var n=e.call(this,t)||this;return console.log("instantiating view"),n.ipc=i.ipcRenderer,n.state={items:[]},window.addEventListener("keydown",function(e){console.log(e),i.ipcRenderer.send("key",e.key)}),n.ipc.prependListener("keyup",function(e){console.log("heard keypress"),console.log(e.which),n.ipc.emit("key",e.which)}),n.setState(n.state),n.ipc.on("update",function(e,t){console.log("revieved update event"),console.log(t),n.setState({items:t})}),n}return o(t,e),t.prototype.stateUpdateCallback=function(){var e=this;return function(t){e.setState({selections:t}),console.log(e.state)}},t.prototype.viewCallbacks=function(){var t=this;return{update:this.stateUpdateCallback(),reset:function(){return e.prototype.setState.call(t,{items:[]})}}},t.prototype.render=function(){var e=this.state.items.map(function(e){return c.createElement("tr",{className:"list-row"},c.createElement("td",{className:e.nested?"nested-list-key":"list-key"},e.symbol),c.createElement("td",{className:e.nested?"nested-list-value":"list-value"},e.lab))});return c.createElement("table",{className:"list-table"},c.createElement("tbody",null,e))},t}(c.Component);t.AbstractView=s},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(3),o=n(0),c=n(1);new(function(){return function(){this.main=document.getElementById("main"),this.a=document.createElement("p"),this.view=c.render(o.createElement(r.AbstractView,null),this.main)}}())}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/home/reagan/code/proj/abstract-space/AbstractSpace/src";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var AbstractView_1 = __webpack_require__(2);
+var React = __webpack_require__(0);
+var dom = __webpack_require__(4);
+var Render = /** @class */ (function () {
+    function Render() {
+        this.main = document.getElementById("main");
+        this.a = document.createElement("p");
+        this.view = dom.render(React.createElement(AbstractView_1.AbstractView, null), this.main);
+    }
+    return Render;
+}());
+var r = new Render();
+//# sourceMappingURL=Render.js.map
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+//import * from "React"
+var React = __webpack_require__(0);
+var electron_1 = __webpack_require__(3);
+var AbstractView = /** @class */ (function (_super) {
+    __extends(AbstractView, _super);
+    function AbstractView(props) {
+        var _this = _super.call(this, props) || this;
+        console.log('instantiating view');
+        _this.ipc = electron_1.ipcRenderer;
+        _this.state = {
+            items: []
+        };
+        window.addEventListener('keydown', function (ev) {
+            console.log(ev);
+            electron_1.ipcRenderer.send('key', ev.key);
+        });
+        _this.ipc.prependListener('keyup', function (ev) {
+            console.log('heard keypress');
+            console.log(ev.which);
+            _this.ipc.emit('key', ev.which);
+        });
+        _this.setState(_this.state);
+        _this.ipc.on('update', function (event, state) {
+            console.log('revieved update event');
+            console.log(state);
+            _this.setState({
+                items: state
+            });
+        });
+        return _this;
+    }
+    AbstractView.prototype.stateUpdateCallback = function () {
+        var _this = this;
+        return function (items) {
+            _this.setState({
+                selections: items
+            });
+            console.log(_this.state);
+        };
+    };
+    AbstractView.prototype.viewCallbacks = function () {
+        var _this = this;
+        return {
+            update: this.stateUpdateCallback(),
+            reset: function () { return _super.prototype.setState.call(_this, {
+                items: []
+            }); }
+        };
+    };
+    AbstractView.prototype.render = function () {
+        var rows = this.state.items.map(function (node) {
+            return React.createElement("tr", { className: "list-row" },
+                React.createElement("td", { className: (node.nested) ? 'nested-list-key' : 'list-key' }, node.symbol),
+                React.createElement("td", { className: (node.nested) ? 'nested-list-value' : 'list-value' }, node.lab));
+        });
+        return (React.createElement("table", { className: "list-table" },
+            React.createElement("tbody", null, rows)));
+    };
+    return AbstractView;
+}(React.Component));
+exports.AbstractView = AbstractView;
+//# sourceMappingURL=AbstractView.js.map
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom");
+
+/***/ })
+/******/ ]);

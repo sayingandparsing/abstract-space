@@ -13,7 +13,7 @@
   "scripts": {
     "test": "xo",
     "start": "electron ./index.js",
-    "dev": "tsc && webpack && electron ./index.js",
+    "dev": "tsc && webpack && electron ./out/index.js",
     "build": "electron-packager . --out=dist --asar --overwrite --all",
     "compile": "tsc && webpack"
   },
@@ -31,6 +31,7 @@
   ],
   "dependencies": {
     "@types/mousetrap": "^1.6.0",
+    "@types/node": "^10.9.2",
     "@types/react-dom": "^16.0.7",
     "amqplib": "^0.5.2",
     "babel-core": "^6.26.3",

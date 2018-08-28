@@ -81,5 +81,5 @@ class ChromeMessageProxy {
 
 }
 
-const proxy = new ChromeMessageProxy('6542')
+//const proxy = new ChromeMessageProxy('6542')
 

@@ -4,7 +4,8 @@
   "sourceMap": true,
 	"jsx": "react",
 	"lib": [ "esnext", "dom" ],
-	"moduleResolution": "node"
+	"moduleResolution": "node",
+	"outDir": "./out"
 	//"allowJs": false
   },
   "exclude": [

@@ -15,7 +15,7 @@ export class CommandExecution {
 	services :{[key:string]: IpcSocket} = {}
 	commands :{[key:number]: Command}
 	ports :{[key:string]: string} = {
-		firefox: '6542'
+		//firefox: '6542'
 	}
 
 	constructor (
