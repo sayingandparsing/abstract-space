@@ -32,7 +32,7 @@ function createMainWindow() {
 	const win = new electron.BrowserWindow({
 		width: winWidth,
 		height: winHeight,
-		frame: true,
+		frame: false,
 		title: 'AbstractSpace',
 		transparent: true
 	});

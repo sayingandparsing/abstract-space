@@ -30,12 +30,16 @@ const Shl = (name :string) => {
 	}
 }
 
+const Web = (name :string, url :string) => {
+    return Sh(name, `firefox ${url}`)
+}
+
 const cmds = {
-	'ranger': 'alacritty -e ranger',
-	'update': 'trizen -Syyu',
-	'python': 'alacritty -e ipython',
-	'ammonite': 'alacritty -e ammonite',
-	'intellij': 'intellij-idea-ultimate-edition'
+	ranger: 'alacritty -e ranger',
+	update: 'trizen -Syyu',
+	python: 'alacritty -e ipython',
+	ammonite: 'alacritty -e ammonite',
+	intellij: 'intellij-idea-ultimate-edition'
 
 
 }
@@ -53,16 +57,22 @@ export const tree = {
 		},
 		e: Sh('vs code', 'code'),
 		r: Sh('ranger', 'alacritty -e ranger'),
-		f: Sh('firefox'),
-		s: {
+        f: Sh('firefox'),
+        s: {
+            lab: 'site',
+            h: Web('hacker news', 'news.ycombinator.com'),
+            n: {
+                lab: 'news',
+                a: Web('ars technica', 'arstechnica.com'),
+                t: Web('ny times', 'nytimes.com')
+            }
+        },
+		S: {
 			lab: 'system',
 			s: Sh('settings', 'systemsettings5')
-
-
 		}
+    },
 
-
-	},
 	w: {
 		lab: 'window',
 		fn: 'fn($window)',
@@ -75,9 +85,31 @@ export const tree = {
 		d: {
 			lab: 'desktop',
 			d: Kde('Switch One Desktop Down', 'down'),
-			u: Kde('Switch One Desktop Up', 'up'),
+            u: Kde('Switch One Desktop Up', 'up'),
+            t: {
+                lab: 'jump to',
+                a: '1',
+                r: '2',
+                s: '3',
+                t: '4',
+            },
+            m: {
+                lab: 'move current',
+                a: '1',
+                r: '2',
+                s: '3',
+                t: '4',
+            }
 		}
 	},
+
+    p: {
+        lab: 'projects',
+    },
+
+    n: {
+        lab: 'notes'
+    },
 
 	s: {
 		lab: 'system',
@@ -85,5 +117,6 @@ export const tree = {
 		l: {
 			lab: 'logs',
 		}
-	}
+    },
+
 }
