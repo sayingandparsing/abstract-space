@@ -8,8 +8,8 @@ message ActiveWindowRequest {}
 
 message ActiveWindowResponse {
 
-	string application = 1
-	string window_title = 2
+	string application = 1;
+	string window_title = 2;
 
 }
 

@@ -3,29 +3,25 @@
 import * as fs from 'fs'
 import * as net from 'net'
 import {IpcServer, IpcSocket} from '../ipc'
+import * as socketio from 'socket.io-client'
 
 class ChromeMessageProxy {
 
-	commandServer :net.Socket //:IpcServer
+  commandServer :net.Socket //:IpcServer
+  io :SocketIOClient.Socket
 
 	constructor(port :string) {
 		process.stdin.on('readable', async () => {
 			//fs.appendFile('/home/reagan/test/nativeMess.txt', 'one instance', ()=>{})
 			//await this.sendMessage(JSON.stringify({text:'hello firefox'}))
 		})
-		this.commandServer = new net.Socket({
-			readable: true,
-			writable: true,
-			allowHalfOpen: true
-		})
-		this.commandServer.connect({
-			port: 6542,
-			//host: '127.0.0.1'
-		})
-		this.commandServer.on('data', async () => {
+    this.io = socketio.connect('http://localhost:6542')
+    this.io.on('connect', async () => await this.sendMessage(JSON.stringify({text:'connected'})))
+    this.io.on('test', async () => await this.sendMessage(JSON.stringify({text:'test worked'})))
+		/*this.commandServer.on('data', async () => {
 			//fs.writeFile('/home/reagan/test/gotIt.txt', 'one instance', ()=>{})
 			await this.sendMessage(JSON.stringify({text:'hello firefox'}))
-		})
+		})*/
 
 				//new IpcSocket(port).createConnection()
 					// .on('command', async (msg) => {

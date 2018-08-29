@@ -79,7 +79,7 @@ export class ProcessController {
         )
         log.debug('Creating request listener')
         this.requestListener =
-            new IpcServer('6602')
+            new IpcServer('6601')
                 .on('tree', async msg => {
                     log.debug('received tree request')
                     const tree = this.commandTrees[msg]

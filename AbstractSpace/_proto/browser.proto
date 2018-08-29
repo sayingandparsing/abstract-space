@@ -1,0 +1,49 @@
+
+
+service BrowserEventReporter {
+
+    rpc reportKey (KeyEvent) returns (KeyEventReply);
+
+    rpc requestView (ViewState) returns (ViewServed);
+}
+
+message KeyEvent {
+    required string key = 1;
+}
+
+message ViewState {
+
+}
+
+message ViewServed {
+
+}
+
+message Pending {
+
+}
+
+message LookupFailure {
+
+}
+
+message KeyEventReply {
+    oneof Reply {
+        Command msg1 = 1;
+        Pending msg2 = 2;
+        LookupFailure msg3 = 3;
+    }
+}
+
+service BrowserRequestChannel {
+    rpc execute (Command) returns (CommandResult);
+}
+
+message Command {
+    required string name = 1;
+    repeated string arg = 2;
+}
+
+message CommandResult {
+
+}

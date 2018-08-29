@@ -1,4 +1,7 @@
 import {ProcessInterface, IpcSocket} from '../ipc'
+import * as http from 'http'
+import * as socketio from 'socket.io'
+import * as express from 'express'
 
 import {
 	Command,
@@ -16,7 +19,10 @@ export class CommandExecution {
 	commands :{[key:number]: Command}
 	ports :{[key:string]: string} = {
 		//firefox: '6542'
-	}
+    }
+    io :socketio.Server
+    app
+    server :http.Server
 
 	constructor (
 		commands :{[key:number]:Command}
@@ -25,12 +31,19 @@ export class CommandExecution {
 		this.commands = commands
 		/*Object.entries(this.ports).forEach(([k,v]) =>
 				this.services[k] = new IpcSocket(v)
-		)*/
+        )*/
+        this.app = express()
+        this.server = http.createServer(this.app)
+        this.server.listen(6542, '127.0.0.1')
+        this.io = socketio(this.server)
+        this.io.on('connection', () => {
+            this.io.emit('test')
+        })
 	}
 
 	async keyseq() {
 
-	}
+    }
 
 	async message(service :string, msg :Object) {
 		try {
