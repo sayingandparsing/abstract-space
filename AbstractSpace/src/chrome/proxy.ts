@@ -2,7 +2,7 @@
 
 import * as fs from 'fs'
 import * as net from 'net'
-import {IpcServer, IpcSocket} from '../ipc'
+import { IpcServer, IpcSocket } from '../ipc'
 import * as socketio from 'socket.io-client'
 
 class ChromeMessageProxy {
@@ -15,7 +15,9 @@ class ChromeMessageProxy {
 			//fs.appendFile('/home/reagan/test/nativeMess.txt', 'one instance', ()=>{})
 			//await this.sendMessage(JSON.stringify({text:'hello firefox'}))
 		})
-    this.io = socketio.connect('http://localhost:6542')
+    this.io = 
+        socketio
+            .connect('http://localhost:6542')
     this.io.on('connect', async () => await this.sendMessage(JSON.stringify({text:'connected'})))
     this.io.on('test', async () => await this.sendMessage(JSON.stringify({text:'test worked'})))
 		/*this.commandServer.on('data', async () => {
