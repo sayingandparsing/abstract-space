@@ -32,13 +32,13 @@ export class CommandExecution {
 		/*Object.entries(this.ports).forEach(([k,v]) =>
 				this.services[k] = new IpcSocket(v)
         )*/
-        this.app = express()
+        /*this.app = express()
         this.server = http.createServer(this.app)
         this.server.listen(6542, '127.0.0.1')
         this.io = socketio(this.server)
         this.io.on('connection', () => {
             this.io.emit('test')
-        })
+        })*/
 	}
 
 	async keyseq() {

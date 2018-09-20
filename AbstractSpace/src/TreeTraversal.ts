@@ -2,7 +2,6 @@
  * Created by rmacc on 5/2/2017.
  */
 
-import {ViewController} from "./ViewController"
 import {EventEmitter} from 'events'
 import {
     DescentContext,
@@ -11,20 +10,22 @@ import {
     TermNode,
     Connections,
     NodeSymbol, AnyNode, RootNode, ProcessState
-} from "./DataTypes"
+} from "./types/DataTypes"
 import {log} from './util/logger'
 import {BrowserWindow} from 'electron'
-import { isCallSignatureDeclaration } from "typescript";
 import { CommandExecution } from "./command/command-functions";
+import keyEventEmitter, { ChainInfo } from './events/keyEvents'
+import { SourcedKeyEvent } from './types/keyEvents';
+
 
 export class TreeTraversal {
     //context :DescentContext;
-    eventQueue :NodeSymbol[]
     context :DescentContext
     viewEmitter = new EventEmitter()
     execution: CommandExecution
     deactivate
     mainWindow :BrowserWindow
+    activeClient :string|null = null
 
     //type NodeSymbol = String
 
@@ -39,14 +40,15 @@ export class TreeTraversal {
         console.log('new traverser')
     }
 
-    async resetContext(nodePtr :RootNode)
+    async resetContext(nodePtr :RootNode, execute? :Function)
     {
         console.log('resetting context')
         this.context = {
             root: nodePtr,
             current: nodePtr,
             level: nodePtr.subtree.map(item => item.data),
-            path: []
+            path: [],
+            commandCb: (execute) ? execute : null
         }
         console.log(this.context.level)
         console.log('sending update command')
@@ -82,7 +84,10 @@ export class TreeTraversal {
                 log.debug("Node is terminal")
                 let term = <TermNode> this.context.current
                 console.log(term.command)
-                await this.execution.executeCommand(term.command)
+                if (this.context.commandCb)
+                    await this.context.commandCb(term.command)
+                else
+                    await this.execution.executeCommand(term.command)
                 this.deactivate()
                 return
 
@@ -103,7 +108,8 @@ export class TreeTraversal {
                     return
                 }
             }
-
+        }
+        else {
 
         }
     }

@@ -3,7 +3,7 @@
  */
 
 import {BrowserWindow} from 'electron'
-import {ProcessState} from './DataTypes'
+import {ProcessState} from './types/DataTypes'
 
 
 export class ViewController {

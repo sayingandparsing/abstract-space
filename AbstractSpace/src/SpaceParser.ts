@@ -7,7 +7,7 @@ import {
 import {log} from './util/logger'
 import {
 	NodeData
-} from './DataTypes'
+} from './types/DataTypes'
 
 interface CT {
 

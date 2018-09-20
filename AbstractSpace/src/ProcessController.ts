@@ -8,6 +8,10 @@ import {BrowserWindow, ipcMain}     from 'electron'
 import {CommandExecution} from './command/command-functions'
 import {loadTrees} from './trees/load-trees'
 import {ipcEvents} from './ipc/ipc-events'
+import {BrowserService} from './clients/proxy'
+
+import keyEventEmitter from './events/keyEvents'
+//import {Constants as C} from './constants'
 
 // const log = require('electron-log');
 // log.transports.file.level = 'debug';
@@ -20,7 +24,7 @@ export interface Context {
 
 export class ProcessController {
 
-    active      :boolean
+    active      :string|null
     mainWindow  :BrowserWindow
     viewService :SingleViewService
     traversal   :TreeTraversal
@@ -33,6 +37,9 @@ export class ProcessController {
     view
     context
     savedRefs :Object = {}
+    browserService :BrowserService
+    internalActive :boolean = false
+    externalActive :boolean = false
 
     constructor(window) {
         console.log('created process controller')
@@ -79,12 +86,13 @@ export class ProcessController {
         )
         log.debug('Creating request listener')
         this.requestListener =
-            new IpcServer('6601')
+            new IpcServer('6602')
                 .on('tree', async msg => {
                     log.debug('received tree request')
                     const tree = this.commandTrees[msg]
                     if (tree!==undefined) {
-                        await this.run_traversal(tree, ()=>{})
+                        this.active = 'main'
+                        await this.runTraversal(tree)
                     }
                     else
                         log.debug('no tree found for request '+msg)
@@ -98,9 +106,13 @@ export class ProcessController {
                 //for (let i of Object.keys(this.commandTrees)) console.log(i)
 
         //await this.run_traversal(this.commandTrees, ()=>{})
-            ipcMain.on('key', async (ev, key) => {
-                await this.traversal.processKeyEvent(key)
+            ipcMain.on('key', async (ev, key :string) => {
+                if (this.active==='main')
+                    await this.traversal.processKeyEvent(key)
             })
+
+            log.debug('starting browser service')
+            this.browserService = new BrowserService(this.requestEngagement)
         }
 
 
@@ -123,17 +135,40 @@ export class ProcessController {
         }
     }
 
+    async requestEngagement (
+        treeName :string,
+        clientName :string,
+        replyFn
+    ) :Promise<boolean> {
+        if (this.active)
+            return false
+        const tree :object|null = this.commandTrees[treeName]
+        if (tree) {
+            this.active = clientName
+            // MAY FAIL DUE TO BLOCKED RETURN
+            this.runTraversal(tree, replyFn)
+            return true
+        }
+        else {
+            log.error(`The tree "${treeName}" `+
+                    `requested by "${clientName} doesn't exist`)
+            return false
+        }
+    }
 
-    async run_traversal(tree, replyFn) {
-        await this.traversal.resetContext(tree)
-        this.active = true
+    async runTraversal(tree, replyFn?) {
+        if (replyFn)
+            await this.traversal.resetContext(tree, replyFn)
+        else
+            await this.traversal.resetContext(tree)
         this.mainWindow.show()
-        this.mainWindow.focus()
+        if (this.active==='main')
+            this.mainWindow.focus()
     }
 
 
     async deactivateSelection() {
-        this.active = false
+        this.active = null
         this.mainWindow.hide()
 
         //// REPLACE

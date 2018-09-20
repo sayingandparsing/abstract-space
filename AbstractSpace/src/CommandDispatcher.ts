@@ -1,6 +1,6 @@
 
 
-import {Command, ProcessResultMessage, ProcessState} from "./DataTypes"
+import {Command, ProcessResultMessage, ProcessState} from "./types/DataTypes"
 
 
 import {remote} from 'electron'

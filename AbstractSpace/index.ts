@@ -3,6 +3,7 @@ const electron = require('electron');
 //const log = require('./src/util/logger')
 //const controller = require('./src/ProcessController')
 import {ProcessController} from './src/ProcessController'
+import { BrowserWindow } from 'electron';
 const log = require('./src/util/logger')
 console.log(log)
 
@@ -12,9 +13,9 @@ const app = electron.app;
 //require('electron-debug')();
 
 // prevent window being garbage collected
-let mainWindow;
+let mainWindow :BrowserWindow;
 
-let processController
+export let processController
 
 function onClosed() {
 	console.log('closing window')
@@ -65,7 +66,8 @@ app.on('activate', () => {
 app.on('ready', () => {
 	console.log('ready')
 	mainWindow = createMainWindow();
-	//mainWindow.hide()
+    mainWindow.hide()
+    mainWindow.setAlwaysOnTop(true)
 	console.log('creating process controller')
 	processController = new ProcessController(mainWindow)
 });
