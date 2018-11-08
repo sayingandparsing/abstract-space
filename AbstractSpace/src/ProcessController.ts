@@ -112,7 +112,8 @@ export class ProcessController {
             })
 
             log.debug('starting browser service')
-            this.browserService = new BrowserService(this.requestEngagement)
+            this.browserService =
+                    new BrowserService(this.requestEngagement)
         }
 
 
@@ -139,7 +140,7 @@ export class ProcessController {
         treeName :string,
         clientName :string,
         replyFn
-    ) :Promise<boolean> {
+    ):Promise<boolean> {
         if (this.active)
             return false
         const tree :object|null = this.commandTrees[treeName]
