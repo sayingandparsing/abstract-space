@@ -99,7 +99,8 @@ export class TreeTraversal {
                     this.context.level = level
                     log.debug('updating view state')
                     this.mainWindow.webContents.send('update', level)
-                } else {
+                }
+                else {
                     /*this.callback({
                         type: 'failure',
                         path: this.context.path
