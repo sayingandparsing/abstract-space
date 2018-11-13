@@ -56,6 +56,7 @@ export type DescentContext = {
     level: Connections;
     path: NodeSymbol[];
     commandCb? :Function
+    vars?: SelectionVars
 }
 
 export interface ProcessResultMessage {
@@ -68,4 +69,11 @@ export enum ProcessState {
     COMPLETED,
     FAILED,
     TERMINATED
+}
+
+export type SelectionVars = Map<string,string>
+
+export interface DynamicAffordance {
+    label :string
+    retrieve :(s:SelectionVars)=>NodeData
 }
