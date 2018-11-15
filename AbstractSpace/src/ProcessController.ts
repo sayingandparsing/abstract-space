@@ -79,7 +79,7 @@ export class ProcessController {
                 log.debug(cmdId)
                 await this.dispatch.executeCommand(cmdId)
             } */
-        this.traversal = new TreeTraversal(
+        this.traversal = new TreeTraversal (
             this.dispatch,
             this.deactivateSelection,
             this.mainWindow

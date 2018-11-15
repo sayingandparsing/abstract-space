@@ -6,6 +6,7 @@ import {EventEmitter} from 'events'
 import {
     DescentContext,
     NodeData,
+    DynamicNode,
     PathNode,
     TermNode,
     Connections,
@@ -75,14 +76,15 @@ export class TreeTraversal {
         if (symbols.indexOf(key) > -1) {
             log.debug("Symbol found for transmitted key")
             this.context.path.push(key)
-            let current = <PathNode> this.context.current
-            this.context.current = current.subtree[current.subtree.map(
-                node => node.data.symbol).indexOf(key)]
+            let current = this.context.current as PathNode
+            this.context.current = current.subtree [
+                current.subtree.map(node => node.data.symbol).indexOf(key)
+            ]
             console.log(this.context.current)
-            if (this.isTerminal(
-                    <PathNode|TermNode> this.context.current)) {
+            const currentNode :AnyNode = this.context.current
+            if (this.isTerminal(currentNode)) {
                 log.debug("Node is terminal")
-                let term = <TermNode> this.context.current
+                let term = currentNode as TermNode
                 console.log(term.command)
                 if (this.context.commandCb)
                     await this.context.commandCb(term.command)
@@ -90,11 +92,10 @@ export class TreeTraversal {
                     await this.execution.executeCommand(term.command)
                 this.deactivate()
                 return
+            }
+            else if (await this.branches(currentNode)) {
 
-            } else {
-
-                let level = this.extractLevel(
-                    <PathNode> this.context.current)
+                let level = await this.extractLevel(currentNode as PathNode)
                 if (level) {
                     this.context.level = level
                     log.debug('updating view state')
@@ -108,6 +109,9 @@ export class TreeTraversal {
                     this.deactivate()
                     return
                 }
+            }
+            else if (await this.isDynamic(currentNode)) {
+                let level :NodeData[] = (currentNode as DynamicNode).resolve()
             }
         }
         else {
@@ -134,16 +138,33 @@ export class TreeTraversal {
     }
 
 
-    extractLevel(node :PathNode) :Connections
-    {
+    async planResponseToNextEvent(
+            currentNode,
+            currentType :'PathNode'|'DynamicNode'
+    ) {
+        switch (currentType) {
+            case 'PathNode':
+
+        }
+    }
+
+
+    async extractLevel(node :PathNode) :Promise<Connections> {
         return node.subtree.map(desc => desc.data);
     }
 
 
-    isTerminal(node :PathNode|TermNode) :boolean
-    {
+    isTerminal(node :AnyNode) :boolean {
         log.debug("Checking if node is terminal")
         return (<TermNode>node).command !== undefined
+    }
+
+    async branches(node :AnyNode) :Promise<boolean> {
+        return (<PathNode>node).subtree !== undefined
+    }
+
+    async isDynamic(node: AnyNode) {
+        return (<DynamicNode>node).resolve !== undefined
     }
 
 
