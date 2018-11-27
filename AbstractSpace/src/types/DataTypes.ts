@@ -10,9 +10,15 @@ export interface RootNode {
     subtree :AnyNode[]
 }
 
+export interface DynamicNode {
+    data :NodeData
+    resolve :Function
+}
+
 export type AnyNode = PathNode
                     | TermNode
                     | RootNode
+                    | DynamicNode
 
 export interface PathNode extends Node {
     data: NodeData
@@ -56,6 +62,7 @@ export type DescentContext = {
     level: Connections;
     path: NodeSymbol[];
     commandCb? :Function
+    vars?: SelectionVars
 }
 
 export interface ProcessResultMessage {
@@ -68,4 +75,11 @@ export enum ProcessState {
     COMPLETED,
     FAILED,
     TERMINATED
+}
+
+export type SelectionVars = Map<string,string>
+
+export interface DynamicAffordance {
+    label :string
+    retrieve :(s:SelectionVars)=>NodeData
 }
