@@ -87,7 +87,8 @@ export class TreeTraversal {
                 if (this.context.commandCb)
                     await this.context.commandCb(term.command)
                 else
-                    await this.execution.executeCommand(term.command)
+                    // CAST VALID?
+                    await this.execution.executeCommand(<number>term.command)
                 this.deactivate()
                 return
 

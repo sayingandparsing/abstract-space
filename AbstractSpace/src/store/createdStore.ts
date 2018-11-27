@@ -6,9 +6,9 @@ import {
     Middleware
 } from 'redux'
 
-import {
+/* import {
     Map
-} from 'immutable'
+} from 'immutable' */
 
 import combinedReducer from './combinedReducer'
 import {DescentContext} from "../types/DataTypes"
@@ -17,17 +17,17 @@ export type TreeResolver = Function
 
 export interface ASConfig {}
 
-const prepareInitialState :(ASConfig)=>()=>SpaceState =
+/* const prepareInitialState :(ASConfig)=>()=>SpaceState =
      (opts :ASConfig) => {
-        const trees :Map<string,TreeResolver> = Map()
+        const trees :Map<string,TreeResolver> = new Map()
         return () => ({
             trees: trees,
-            stratum: Map(),
+            context: {},//: Map(),
             activeClient: null,
         })
 }
 
-
+prepareInitialState({}) */
 
 export interface SpaceState {
     trees :Map<string,TreeResolver>
