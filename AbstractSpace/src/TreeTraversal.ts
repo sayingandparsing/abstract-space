@@ -17,6 +17,7 @@ import {BrowserWindow} from 'electron'
 import { CommandExecution } from "./command/command-functions";
 import keyEventEmitter, { ChainInfo } from './events/keyEvents'
 import { SourcedKeyEvent } from './types/keyEvents';
+import { Observable } from 'rxjs'
 
 
 export class TreeTraversal {
@@ -116,6 +117,15 @@ export class TreeTraversal {
         }
         else {
 
+        }
+    }
+
+    async selectionResponse(obs :Observable<NodeSymbol>) {
+        const specType = null
+        const processNextSignal = async () => {
+            switch (specType) {
+
+            }
         }
     }
 
