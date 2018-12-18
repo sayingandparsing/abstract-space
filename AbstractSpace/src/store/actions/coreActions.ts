@@ -37,6 +37,8 @@ export const issueCommand =
 export const updateView =
     () => ({
         type: AsAction.UPDATE_VIEW,
+        payload: {
+        }
     })
 
 export const setContext = null

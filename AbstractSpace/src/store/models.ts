@@ -19,14 +19,14 @@ export interface History {
     
 }
 
-class TabOrigins extends Map<TabId,TabId> {
+/* class TabOrigins extends Map<TabId,TabId> {
     constructor (
 
     ) {}
-}
+} */
 
 export interface BrowserState {
     tabs :Tab[],
     history :History
-    origins :
+    origins
 }
